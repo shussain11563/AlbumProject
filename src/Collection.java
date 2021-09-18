@@ -3,28 +3,130 @@ public class Collection {
     private int numAlbums; //number of albums currently in the collection
 
 
-    private int find(Album album) {
+    // change constructor to no parameters and code in a 4 or define it in the project testbed
+    public Collection(int numAlbums)
+    {
+        //initialize to 0??
+        this.numAlbums = numAlbums;
+        albums = new Album[this.numAlbums];
+
+    }
+
+    //use a hashmap??? nvm, cant use instance variables
+    private int find(Album album)
+    {
+        //might have to use album methods to check the album attributes
+        //change i to something descriptive
+
+        //we can always use a helper method to iterate because of remvoe
+        for(int i = 0; i < this.numAlbums; i++)
+        {
+            //check if its not null
+            if(this.albums[i] != null && this.albums[i].equals(album))
+            {
+                return i;
+            }
+        }
+        return -1;
+        //return NOT_FOUND;
     } //find the album index, or return NOT_FOUND
 
-    private void grow() {
+    private void grow()
+    {
+        Album[] oldAlbumsCollection = albums;
+        this.albums = new Album[albums.length+4]; //4 is a magic number
+
+        for(int i = 0; i < oldAlbumsCollection.length; i++)
+        {
+            //copy into ??
+            this.albums[i] = oldAlbumsCollection[i];
+        }
+
+        //set the remaining to null?
+
+
+
+        //we need to add an if/else if we use albums.length
+
     } //increase the capacity of the array list by 4
 
-    public boolean add(Album album) {
+    public boolean add(Album album)
+    {
+        // change to numAlbums == this.album.length
+        if(numAlbums == this.albums.length)
+        {
+            grow();
+        }
+
+        this.albums[this.numAlbums] = album;
+        //inserting album
+
+        this.numAlbums++;
+
+        return true;
+        //return false in certain condition it fails??
     }
 
-    public boolean remove(Album album) {
+    //
+    private void shifting()
+    {
+        for(int i = 0; i < this.albums.length - 1; i++)
+        {
+
+            if(this.albums[i] == null)
+            {
+                this.albums[i] = this.albums[i+1];
+            }
+        }
     }
 
-    public boolean lendingOut(Album album) {
+
+    public boolean remove(Album album)
+    {
+        boolean isRemoved = false;
+        //use the same method we used in find
+        int albumIndex = this.find(album);
+
+        if(albumIndex >= 0)
+        {
+            this.albums[albumIndex] = null;
+            this.numAlbums--;
+            this.shifting();
+            isRemoved = true;
+        }
+
+        return isRemoved;
+    }
+
+
+    public boolean lendingOut(Album album)
+    {
+        int albumIndex = this.find(album);
+
+        return true;
+
+
+        //if not available, set message to not available
+
+
     } //set to not available
 
-    public boolean returnAlbum(Album album) {
+    public boolean returnAlbum(Album album)
+    {
+        return false;
     } //set to available
 
-    public void print() {
+    public void print()
+    {
+        for(int i = 0; i < this.numAlbums; i++)
+        {
+            System.out.println(this.albums[i].toString());
+        }
     } //display the list without specifying the order
 
-    public void printByReleaseDate() {
+    public void printByReleaseDate()
+    {
+
     }
 
     public void printByGenre() {
