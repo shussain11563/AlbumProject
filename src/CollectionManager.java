@@ -13,6 +13,21 @@ public class CollectionManager {
         System.out.println("Collection Manager starts running.");
         Scanner scanner = new Scanner(System.in);
 
+        /*
+
+        Date releaseDate = new Date("2/29/2021");
+        Date currentDate = new Date();
+
+        if(releaseDate.isValid() && releaseDate.compareTo(currentDate) <= 0) {
+            System.out.println("Valid Date!");
+        }
+        else{
+            System.out.println("Invalid Date!");
+        }
+
+        */
+
+
         while(scanner.hasNextLine()) {
             String commandLineInput = scanner.next();
 
@@ -50,23 +65,31 @@ public class CollectionManager {
 
     }
 
+    // Check if date is valid
     public void runAddAlbum(String albumDetails) {
-        StringTokenizer stringTokenizer = new StringTokenizer(albumDetails);
+        StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
 
         String title = "";
         String artist = "";
         String genre = "";
-        // Date releaseDate = "";
 
         stringTokenizer.nextToken();
         title = stringTokenizer.nextToken();
         artist = stringTokenizer.nextToken();
         genre = stringTokenizer.nextToken();
+        Date releaseDate = new Date(stringTokenizer.nextToken());
+        Date currentDate = new Date();
 
+        if(releaseDate.isValid() && releaseDate.compareTo(currentDate) <= 0) {
+            System.out.println("Valid Date!");
+        }
+        else{
+            System.out.println("Invalid Date!");
+        }
     }
 
     public void runDeleteAlbum(String albumDetails) {
-        StringTokenizer stringTokenizer = new StringTokenizer(albumDetails);
+        StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
         String title = "";
         String artist = "";
 
@@ -76,7 +99,7 @@ public class CollectionManager {
     }
 
     public void runLendAlbum(String albumDetails) {
-        StringTokenizer stringTokenizer = new StringTokenizer(albumDetails);
+        StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
         String title = "";
         String artist = "";
 
@@ -86,7 +109,7 @@ public class CollectionManager {
     }
 
     public void runReturnAlbum(String albumDetails) {
-        StringTokenizer stringTokenizer = new StringTokenizer(albumDetails);
+        StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
         String title = "";
         String artist = "";
 
@@ -94,6 +117,4 @@ public class CollectionManager {
         title = stringTokenizer.nextToken();
         artist = stringTokenizer.nextToken();
     }
-
-
 }
