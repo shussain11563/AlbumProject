@@ -120,11 +120,11 @@ public class Date implements Comparable<Date>
         return 10;
     }
 
-    public static void main(String[] args)
+    //are we allowed to even have a toString method
+    @Override
+    public String toString()
     {
-        Date test = new Date("11/08/2000");
-        System.out.println(test.month);
-        System.out.println(test);
+        return String.format("%d/%d/%d", this.month, this.day, this.year);
     }
 
 
