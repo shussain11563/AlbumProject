@@ -93,17 +93,13 @@ public class Album {
 
         if(this.isAvailable == true)
         {
-            availability = "is available"
+            availability = "is available";
         }
         else
         {
             availability = "is not available";
         }
 
-        String isAvailableTextualRepresentation = "";
-        return isAvailableTextualRepresentation;
-        //use getters/setters
-        //convert genre, date, .toString??
-        String albumTextualRepresentation =  String.format("%s::%s::%s::%s::%s", this.title, this.artist, this.genre, this.date, availability);
+        return String.format("%s::%s::%s::%s::%s", this.title, this.artist, this.genre, this.releaseDate, availability);
     }
 }
