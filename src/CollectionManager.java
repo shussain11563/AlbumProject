@@ -42,7 +42,7 @@ public class CollectionManager {
             else if(commandLineInput.charAt(0) == 'A' && commandLineInput.charAt(1) == ',')
                 runAddAlbum(commandLineInput, albumCollection);
             else if(commandLineInput.charAt(0) == 'D' && commandLineInput.charAt(1) == ',')
-                runDeleteAlbum(commandLineInput);
+                runRemoveAlbum(commandLineInput, albumCollection);
             else if(commandLineInput.charAt(0) == 'L' && commandLineInput.charAt(1) == ',')
                 runLendAlbum(commandLineInput);
             else if(commandLineInput.charAt(0) == 'R' && commandLineInput.charAt(1) == ',')
@@ -109,7 +109,7 @@ public class CollectionManager {
         }
     }
 
-    public void runDeleteAlbum(String albumDetails) {
+    public void runRemoveAlbum(String albumDetails, Collection albumCollection) {
         StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
         String title = "";
         String artist = "";
@@ -117,6 +117,15 @@ public class CollectionManager {
         stringTokenizer.nextToken();
         title = stringTokenizer.nextToken();
         artist = stringTokenizer.nextToken();
+
+        Album tempAlbum = new Album(title, artist);
+
+        if(albumCollection.remove(tempAlbum))
+            System.out.println(tempAlbum.removeToString());
+        else
+            System.out.println("Album does not exist.");
+
+
     }
 
     public void runLendAlbum(String albumDetails) {
