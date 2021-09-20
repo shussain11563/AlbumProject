@@ -7,7 +7,7 @@ public class Collection {
         //might have to use album methods to check the album attributes
         //change i to something descriptive
 
-        //we can always use a helper method to iterate because of remvoe
+        //we can always use a helper method to iterate because of remove
         for(int i = 0; i < this.numAlbums; i++)
         {
             //check if its not null
@@ -115,12 +115,68 @@ public class Collection {
         }
     } //display the list without specifying the order
 
+
+    //generic for copying data?
+
     public void printByReleaseDate()
     {
+        Album[] copyOfAlbum = new Album[this.albums.length];
+        Date[] dates = new Date[this.albums.length]; //assuming everything is set to null by default
+        for(int i = 0; i < this.albums.length; i++)
+        {
+            copyOfAlbum[i] = this.albums[i];
+            if(this.albums[i] != null)
+            {
+                dates[i] = this.albums[i].getReleaseDate();
+                //use setter/getter methods for getting
+            }
+        }
+        insertionSort(dates, copyOfAlbum);
+
+
+
+        //
+    }
+
+    public void printByGenre() //fix this method??
+    {
+        Album[] copyOfAlbum = new Album[this.albums.length];
+        Album.Genre[] genres = new Album.Genre[this.albums.length]; //assuming everything is set to null by default
+        for(int i = 0; i < this.albums.length; i++)
+        {
+            copyOfAlbum[i] = this.albums[i];
+            if(this.albums[i] != null)
+            {
+                genres[i] = this.albums[i].getGenre();
+                //use setter/getter methods for getting
+            }
+        }
+
+        insertionSort(genres, copyOfAlbum);
 
     }
 
-    public void printByGenre() {
+    public <T extends Comparable<T>> void insertionSort(T[] arr, Album[] album)
+    {
+        for(int i = 0; i < album.length; i++)
+        {
+            T key = arr[i];
+            Album keyPointer = album[i];
+            int j = i-1;
+
+            //while(j>=0 && arr[j] > key         ) //arr[j].compareTo(key) or key.compareTo(arr[j])
+            //might switch inequality
+            while(j>=0 && arr[j].compareTo(key)>0)
+            {
+                arr[j+1] = arr[j];
+                album[j+1] = album[j];
+                j = j-1;
+            }
+
+            arr[j+1] = key;
+            album[j+1] = keyPointer;
+        }
+
     }
 
 

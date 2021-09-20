@@ -30,6 +30,7 @@ public class Date implements Comparable<Date>
         this.year = currentDate.get(Calendar.YEAR);
     }
 
+
     /*
         ?) Check if the date is beyond the current Date
         1) Check if Month is between 1 and 12
@@ -119,8 +120,12 @@ public class Date implements Comparable<Date>
         return 10;
     }
 
-    public static void main(String args[])
+    public static void main(String[] args)
     {
-        
+        Date test = new Date("11/08/2000");
+        System.out.println(test.month);
+        System.out.println(test);
     }
+
+
 }
