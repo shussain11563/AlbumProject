@@ -89,6 +89,12 @@ public class Album {
     @Override
     public String toString()
     {
+        String availability = "";
+
+        if(this.isAvailable == true)
+        {
+
+        }
 
         String isAvailableTextualRepresentation = "";
         return isAvailableTextualRepresentation;
