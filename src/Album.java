@@ -5,10 +5,7 @@ public class Album {
     private Date releaseDate;
     private boolean isAvailable;
 
-    public Album(String title, String artist, Genre genre, Date releaseDate, boolean isAvailable)
-    {
-        //do string parsing here?? or driver??
-
+    public Album(String title, String artist, Genre genre, Date releaseDate, boolean isAvailable) {
         this.title = title;
         this.artist = artist;
         this.genre = genre;
@@ -17,52 +14,49 @@ public class Album {
 
     }
 
-    @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Album album) {
         boolean isEqual = false;
-        if (obj == this)
+
+        /*
+        if (album == this)
         {
             return true;
         }
-        /*
+
         if (obj == null)
         {
             return false
          */
 
-        Album album = (Album) obj;
         //might use helper method
-        if(!(this.title.equals(album.title))
+        if(!(this.title.equals(album.title)))
         {
             return isEqual;
         }
 
-        if(!(this.artist.equals(album.artist))
+        if(!(this.artist.equals(album.artist)))
         {
             return isEqual;
         }
 
-        if(!(this.genre.equals(album.artist))
+        if(!(this.genre.equals(album.genre)))
         {
             return isEqual;
         }
 
-        if(!(this.releaseDate.equals(album.releaseDate))
+        if((this.releaseDate.compareTo(album.releaseDate)) != 0)
         {
             return isEqual;
         }
 
         isEqual = true;
         return isEqual;
-
-        //do not compare isAvailable
     }
-
 
     // NEED TO ADD **DATE** TO THE TO STRING
     @Override
     public String toString() {
         return this.title + "::" + this.artist + "::" + this.genre + "::" + "is available";
     }
+
 }

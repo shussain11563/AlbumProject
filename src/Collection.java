@@ -2,7 +2,6 @@ public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
 
-    //use a hashmap??? nvm, cant use instance variables
     private int find(Album album)
     {
         //might have to use album methods to check the album attributes
@@ -18,37 +17,31 @@ public class Collection {
             }
         }
         return -1;
-        //return NOT_FOUND;
-    } //find the album index, or return NOT_FOUND
+    }
 
     private void grow()
     {
-
-
+        // check if the Albums[] is null, then inititates the starter array
         if(albums == null)
             this.albums = new Album[4];
         else {
             Album[] oldAlbumsCollection = albums;
+            int oldAlbumsArrayLength = albums.length;
             this.albums = new Album[albums.length+4]; //4 is a magic number
+
+            // Copy oldAlbum into bigger Albums[]
+            for(int i = 0; i < oldAlbumsArrayLength; i++) {
+                this.albums[i] = oldAlbumsCollection[i];
+            }
         }
-
-//        for(int i = 0; i < oldAlbumsCollection.length; i++)
-//        {
-//            //copy into ??
-//            this.albums[i] = oldAlbumsCollection[i];
-//        }
-
-        //set the remaining to null?
-
-
-
-        //we need to add an if/else if we use albums.length
 
     } //increase the capacity of the array list by 4
 
     public boolean add(Album album)
     {
-
+        //return false if the album already exists
+        if(find(album) != -1)
+            return false;
         // change to numAlbums == this.album.length
         if(albums == null || numAlbums == this.albums.length)
         {
@@ -59,9 +52,7 @@ public class Collection {
         //inserting album
 
         this.numAlbums++;
-
         return true;
-        //return false in certain condition it fails??
     }
 
     //
