@@ -79,11 +79,21 @@ public class Album {
     {
         String availability = "";
 
+
+        if(this.isAvailable == true)
+        {
+            availability = "is available"
+        }
+        else
+        {
+            availability = "is not available";
+        }
+
         String isAvailableTextualRepresentation = "";
         return this.title + "::" + this.artist + "::" + this.genre + "::" + this.releaseDate.toString() + "::" + "is available";
         //use getters/setters
         //convert genre, date, .toString??
-        //String albumTextualRepresentation =  String.format("%s::%s::%s::%s::%s", this.title, this.artist, this.genre.toString(), this.date.toString(), status);
+        String albumTextualRepresentation =  String.format("%s::%s::%s::%s::%s", this.title, this.artist, this.genre, this.date, availability);
     }
 
     public String removeToString() {
