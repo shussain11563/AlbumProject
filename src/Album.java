@@ -59,6 +59,10 @@ public class Album {
         //do not compare isAvailable
     }
 
+
+    // NEED TO ADD **DATE** TO THE TO STRING
     @Override
-    public String toString() { }
+    public String toString() {
+        return this.title + "::" + this.artist + "::" + this.genre + "::" + "is available";
+    }
 }

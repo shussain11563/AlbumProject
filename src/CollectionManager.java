@@ -26,19 +26,19 @@ public class CollectionManager {
         }
 
         */
-
+        Collection newCollection = new Collection();
 
         while(scanner.hasNextLine()) {
             String commandLineInput = scanner.next();
 
             if(commandLineInput.equals("P"))
-                runDisplayCollection();
+                runDisplayCollection(newCollection);
             else if(commandLineInput.equals("PD"))
                 runDisplayCollectionByDate();
             else if(commandLineInput.equals("PG"))
                 runDisplayCollectionByGenre();
             else if(commandLineInput.charAt(0) == 'A' && commandLineInput.charAt(1) == ',')
-                runAddAlbum(commandLineInput);
+                runAddAlbum(commandLineInput, newCollection);
             else if(commandLineInput.charAt(0) == 'D' && commandLineInput.charAt(1) == ',')
                 runDeleteAlbum(commandLineInput);
             else if(commandLineInput.charAt(0) == 'L' && commandLineInput.charAt(1) == ',')
@@ -54,7 +54,8 @@ public class CollectionManager {
         }
     }
 
-    public void runDisplayCollection() {
+    public void runDisplayCollection(Collection newCollection) {
+        newCollection.print();
 
     }
     public void runDisplayCollectionByDate() {
@@ -66,19 +67,36 @@ public class CollectionManager {
     }
 
     // Check if date is valid
-    public void runAddAlbum(String albumDetails) {
+    public void runAddAlbum(String albumDetails, Collection newCollection) {
         StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
 
+        Boolean checkGenre = true;
         String title = "";
         String artist = "";
         String genre = "";
+        String date = "";
 
         stringTokenizer.nextToken();
         title = stringTokenizer.nextToken();
         artist = stringTokenizer.nextToken();
         genre = stringTokenizer.nextToken();
-        Date releaseDate = new Date(stringTokenizer.nextToken());
+        date = stringTokenizer.nextToken();
+        if(!(genre.equals("pop") || genre.equals("country") || genre.equals("classical") || genre.equals("jazz"))) {
+            genre = "Unknown";
+        }
+
+        Genre addGenre = Genre.valueOf(genre.substring(0, 1).toUpperCase() + genre.substring(1));
+
+
+        Date releaseDate = new Date(date);
         Date currentDate = new Date();
+
+        Album addNewAlbum = new Album(title, artist, addGenre, releaseDate, true);
+        newCollection.add(addNewAlbum);
+
+        // Change::Anika::Pop::7/23/2021::is available >> added.
+
+        System.out.println(title + "::" + artist + "::" + genre + "::" + date + "::" + "is available" + " >> added");
 
         if(releaseDate.isValid() && releaseDate.compareTo(currentDate) <= 0) {
             System.out.println("Valid Date!");
@@ -86,6 +104,7 @@ public class CollectionManager {
         else{
             System.out.println("Invalid Date!");
         }
+
     }
 
     public void runDeleteAlbum(String albumDetails) {

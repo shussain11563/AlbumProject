@@ -2,16 +2,6 @@ public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
 
-
-    // change constructor to no parameters and code in a 4 or define it in the project testbed
-    public Collection(int numAlbums)
-    {
-        //initialize to 0??
-        this.numAlbums = numAlbums;
-        albums = new Album[this.numAlbums];
-
-    }
-
     //use a hashmap??? nvm, cant use instance variables
     private int find(Album album)
     {
@@ -33,14 +23,20 @@ public class Collection {
 
     private void grow()
     {
-        Album[] oldAlbumsCollection = albums;
-        this.albums = new Album[albums.length+4]; //4 is a magic number
 
-        for(int i = 0; i < oldAlbumsCollection.length; i++)
-        {
-            //copy into ??
-            this.albums[i] = oldAlbumsCollection[i];
+
+        if(albums == null)
+            this.albums = new Album[4];
+        else {
+            Album[] oldAlbumsCollection = albums;
+            this.albums = new Album[albums.length+4]; //4 is a magic number
         }
+
+//        for(int i = 0; i < oldAlbumsCollection.length; i++)
+//        {
+//            //copy into ??
+//            this.albums[i] = oldAlbumsCollection[i];
+//        }
 
         //set the remaining to null?
 
@@ -52,8 +48,9 @@ public class Collection {
 
     public boolean add(Album album)
     {
+
         // change to numAlbums == this.album.length
-        if(numAlbums == this.albums.length)
+        if(albums == null || numAlbums == this.albums.length)
         {
             grow();
         }
@@ -118,8 +115,11 @@ public class Collection {
 
     public void print()
     {
+        System.out.println("*List of albums in the collection.");
+
         for(int i = 0; i < this.numAlbums; i++)
         {
+
             System.out.println(this.albums[i].toString());
         }
     } //display the list without specifying the order
