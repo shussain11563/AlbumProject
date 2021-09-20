@@ -133,6 +133,12 @@ public class Collection {
         }
         insertionSort(dates, copyOfAlbum);
 
+        for(int i = 0; i < this.numAlbums; i++)
+        {
+
+            System.out.println(copyOfAlbum[i].toString());
+        }
+
 
 
         //
@@ -153,6 +159,12 @@ public class Collection {
         }
 
         insertionSort(genres, copyOfAlbum);
+        for(int i = 0; i < this.numAlbums; i++)
+        {
+
+            System.out.println(copyOfAlbum[i].toString());
+        }
+
 
     }
 
