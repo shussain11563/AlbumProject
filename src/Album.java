@@ -2,7 +2,6 @@ public class Album {
     private String title;
     private String artist;
     private Genre genre; //enum class; Classical, Country, Jazz, Pop, Unknown
-    enum Genre {Classical, Country, Jazz, Pop, Unknown};
     private Date releaseDate;
     private boolean isAvailable;
 
@@ -15,6 +14,13 @@ public class Album {
         this.genre = genre;
         this.releaseDate = releaseDate;
         this.isAvailable = isAvailable;
+
+    }
+
+    public Album(String title, String artist)
+    {
+        this.title = title;
+        this.artist = artist;
 
     }
 
@@ -44,52 +50,35 @@ public class Album {
         return this.isAvailable;
     }
 
-    @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Album album) {
         boolean isEqual = false;
-        if (obj == this)
+
+        /*
+        if (album == this)
         {
             return true;
         }
-        /*
+
         if (obj == null)
         {
             return false
          */
 
-        Album album = (Album) obj;
         //might use helper method
-        if(!(this.title.equals(album.title)))
-        {
-            return isEqual;
-        }
-
-        if(!(this.artist.equals(album.artist)))
-        {
-            return isEqual;
-        }
-
-        if(!(this.genre.equals(album.artist)))
-        {
-            return isEqual;
-        }
-
-        if(!(this.releaseDate.equals(album.releaseDate)))
+        if(!(this.title.equals(album.title)) && !(this.artist.equals(album.artist)) && !(this.genre.equals(album.genre)) && (this.releaseDate.compareTo(album.releaseDate)) != 0)
         {
             return isEqual;
         }
 
         isEqual = true;
         return isEqual;
-
-        //do not compare isAvailable
     }
 
     @Override
     public String toString()
     {
         String availability = "";
+
 
         if(this.isAvailable == true)
         {
@@ -101,9 +90,14 @@ public class Album {
         }
 
         String isAvailableTextualRepresentation = "";
-        return isAvailableTextualRepresentation;
+        return this.title + "::" + this.artist + "::" + this.genre + "::" + this.releaseDate.toString() + "::" + "is available";
         //use getters/setters
         //convert genre, date, .toString??
         String albumTextualRepresentation =  String.format("%s::%s::%s::%s::%s", this.title, this.artist, this.genre, this.date, availability);
+    }
+
+    public String removeToString() {
+        //Famous Friends::Chris Young >> deleted.
+        return this.title + "::" + this.artist + " >> " + "deleted.";
     }
 }

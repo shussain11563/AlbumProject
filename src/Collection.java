@@ -75,6 +75,7 @@ public class Collection {
         //use the same method we used in find
         int albumIndex = this.find(album);
 
+
         if(albumIndex >= 0)
         {
             this.albums[albumIndex] = null;
@@ -82,10 +83,8 @@ public class Collection {
             this.shifting();
             isRemoved = true;
         }
-
         return isRemoved;
     }
-
 
     public boolean lendingOut(Album album)
     {
@@ -147,7 +146,7 @@ public class Collection {
     public void printByGenre() //fix this method??
     {
         Album[] copyOfAlbum = new Album[this.albums.length];
-        Album.Genre[] genres = new Album.Genre[this.albums.length]; //assuming everything is set to null by default
+        Genre[] genres = new Genre[this.albums.length]; //assuming everything is set to null by default
         for(int i = 0; i < this.albums.length; i++)
         {
             copyOfAlbum[i] = this.albums[i];
@@ -190,6 +189,8 @@ public class Collection {
         }
 
     }
+
+
 
 
 }
