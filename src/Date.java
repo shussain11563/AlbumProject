@@ -1,7 +1,8 @@
 import java.util.StringTokenizer;
 import java.util.Calendar;
 
-public class Date implements Comparable<Date> {
+public class Date implements Comparable<Date>
+{
 
     private final int month;
     private final int day;
@@ -21,7 +22,8 @@ public class Date implements Comparable<Date> {
     }
 
     //create an object with today’s date (see Calendar class)
-    public Date() {
+    public Date()
+    {
         Calendar currentDate = Calendar.getInstance();
         this.month = currentDate.get(Calendar.MONTH) + 1;
         this.day = currentDate.get(Calendar.DATE);
@@ -115,5 +117,10 @@ public class Date implements Comparable<Date> {
         }
 
         return 10;
+    }
+
+    public static void main(String args[])
+    {
+        
     }
 }
