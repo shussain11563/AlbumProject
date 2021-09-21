@@ -10,9 +10,8 @@ public class CollectionManager {
      */
 
     public void run() {
-        System.out.println("Collection Manager starts running.");
         Scanner scanner = new Scanner(System.in);
-
+        Boolean runProject = false;
         /*
 
         Date releaseDate = new Date("2/29/2021");
@@ -31,14 +30,22 @@ public class CollectionManager {
         Collection albumCollection = new Collection();
 
         while(scanner.hasNextLine()) {
-            String commandLineInput = scanner.next();
+
+            if(runProject == false) {
+                System.out.println("Collection Manager starts running.");
+                runProject = true;
+            }
+
+
+            String commandLineInput = scanner.nextLine();
+            commandLineInput = commandLineInput.trim();
 
             if(commandLineInput.equals("P"))
                 runDisplayCollection(albumCollection);
             else if(commandLineInput.equals("PD"))
-                runDisplayCollectionByDate();
+                runDisplayCollectionByDate(albumCollection);
             else if(commandLineInput.equals("PG"))
-                runDisplayCollectionByGenre();
+                runDisplayCollectionByGenre(albumCollection);
             else if(commandLineInput.charAt(0) == 'A' && commandLineInput.charAt(1) == ',')
                 runAddAlbum(commandLineInput, albumCollection);
             else if(commandLineInput.charAt(0) == 'D' && commandLineInput.charAt(1) == ',')
@@ -60,11 +67,13 @@ public class CollectionManager {
         // Calls the NonStatic Method in Collection with the albumCollection parameter
         albumCollection.print();
     }
-    public void runDisplayCollectionByDate() {
+    public void runDisplayCollectionByDate(Collection albumCollection) {
+        albumCollection.printByReleaseDate();
 
     }
 
-    public void runDisplayCollectionByGenre() {
+    public void runDisplayCollectionByGenre(Collection albumCollection) {
+        albumCollection.printByGenre();
 
     }
 
@@ -99,9 +108,9 @@ public class CollectionManager {
             Album addNewAlbum = new Album(title, artist, addGenre, releaseDate, true);
 
             if(albumCollection.add(addNewAlbum))
-                System.out.println(title + "::" + artist + "::" + genre + "::" + date + "::" + "is available" + " >> added");
+                System.out.println(addNewAlbum.addToString() + " >> added");
             else
-                System.out.println(title + "::" + artist + "::" + genre + "::" + date + "::" + "is available" + " >> is already in the collection.");
+                System.out.println(addNewAlbum.addToString() + " >> is already in the collection.");
 
         }
         else{

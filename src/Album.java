@@ -7,8 +7,6 @@ public class Album {
 
     public Album(String title, String artist, Genre genre, Date releaseDate, boolean isAvailable)
     {
-        //do string parsing here?? or driver??
-
         this.title = title;
         this.artist = artist;
         this.genre = genre;
@@ -59,8 +57,7 @@ public class Album {
     public boolean equals(Object obj)
     {
         boolean isEqual = false;
-        if (obj == this)
-        {
+        if (obj == this) {
             return true;
         }
         /*
@@ -71,34 +68,29 @@ public class Album {
 
         Album album = (Album) obj;
         //might use helper method
-        if(!(this.title.equals(album.title)) && !(this.artist.equals(album.artist)) && !(this.genre.equals(album.genre)) && (this.releaseDate.compareTo(album.releaseDate)) != 0)
-        {
+        if(!(this.title.equals(album.title)) && !(this.artist.equals(album.artist))) {
             return isEqual;
         }
+
         isEqual = true;
         return isEqual;
     }
 
     @Override
-    public String toString()
-    {
-        String availability = "";
-
-
-        if(this.isAvailable == true)
-        {
-            availability = "is available";
-        }
-        else
-        {
-            availability = "is not available";
-        }
-
+    public String toString() {
+        String availability = (this.isAvailable) ? "is available" : "is not available";
         return String.format("%s::%s::%s::%s::%s", this.title, this.artist, this.genre, this.releaseDate, availability);
+
     }
 
     public String removeToString() {
-        //Famous Friends::Chris Young >> deleted.
-        return this.title + "::" + this.artist + " >> " + "deleted.";
+        return String.format("%s::%s >> deleted." , this.title, this.artist);
+
+    }
+
+    public String addToString() {
+        String availability = (this.isAvailable) ? "is available" : "is not available";
+        return String.format("%s::%s::%s::%s::%s", this.title, this.artist, this.genre, this.releaseDate, availability);
+
     }
 }

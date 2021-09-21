@@ -17,11 +17,9 @@ public class Collection {
         //change i to something descriptive
 
         //we can always use a helper method to iterate because of remove
-        for(int i = 0; i < this.numAlbums; i++)
-        {
+        for(int i = 0; i < this.numAlbums; i++) {
             //check if its not null
-            if(this.albums[i] != null && this.albums[i].equals(album))
-            {
+            if(this.albums[i] != null && this.albums[i].equals(album)) {
                 return i;
             }
         }
@@ -31,32 +29,28 @@ public class Collection {
     private void grow()
     {
         // check if the Albums[] is null, then inititates the starter array
-        if(albums == null)
-            this.albums = new Album[4];
-        else {
-            Album[] oldAlbumsCollection = albums;
-            int oldAlbumsArrayLength = albums.length;
-            this.albums = new Album[albums.length+4]; //4 is a magic number
 
-            // Copy oldAlbum into bigger Albums[]
-            for(int i = 0; i < oldAlbumsArrayLength; i++) {
-                this.albums[i] = oldAlbumsCollection[i];
-            }
+        Album[] oldAlbumsCollection = albums;
+        int oldAlbumsArrayLength = albums.length;
+        this.albums = new Album[albums.length+4]; //4 is a magic number
+
+        // Copy oldAlbum into bigger Albums[]
+        for(int i = 0; i < oldAlbumsArrayLength; i++) {
+            this.albums[i] = oldAlbumsCollection[i];
         }
+
 
     } //increase the capacity of the array list by 4
 
     public boolean add(Album album)
     {
         //return false if the album already exists
-        if(find(album) >= 0)
-        {
+        if(find(album) >= 0) {
             return false;
         }
 
         // change to numAlbums == this.album.length
-        if(albums == null || numAlbums == this.albums.length)
-        {
+        if(albums == null || numAlbums == this.albums.length) {
             grow();
         }
 
@@ -70,11 +64,9 @@ public class Collection {
     //
     private void shifting()
     {
-        for(int i = 0; i < this.albums.length - 1; i++)
-        {
+        for(int i = 0; i < this.albums.length - 1; i++) {
 
-            if(this.albums[i] == null)
-            {
+            if(this.albums[i] == null) {
                 this.albums[i] = this.albums[i+1];
             }
         }
@@ -88,8 +80,7 @@ public class Collection {
         int albumIndex = this.find(album);
 
 
-        if(albumIndex >= 0)
-        {
+        if(albumIndex >= 0) {
             this.albums[albumIndex] = null;
             this.numAlbums--;
             this.shifting();
@@ -102,14 +93,12 @@ public class Collection {
     {
         int albumIndex = this.find(album);
 
-        if(albumIndex >=0 && album.getAvailability()==true)
-        {
+        if(albumIndex >=0 && album.getAvailability()==true) {
 
             this.albums[albumIndex].setAvailable(false);
             return true;
         }
-        else
-        {
+        else {
             return false; //not avaialble, already lended out
         }
 
@@ -125,23 +114,24 @@ public class Collection {
     {
         int albumIndex = this.find(album);
 
-        if(albumIndex >=0 && album.getAvailability()==false)
-        {
+        if(albumIndex >=0 && album.getAvailability()==false) {
             this.albums[albumIndex].setAvailable(true);
             return true;
         }
-        else
-        {
+        else {
             return false; //not avaialble, already lended out
         }
     } //set to available
 
     public void print()
     {
+        if(numAlbums == 0) {
+            System.out.println("The collection is empty!");
+            return;
+        }
         System.out.println("*List of albums in the collection.");
 
-        for(int i = 0; i < this.numAlbums; i++)
-        {
+        for(int i = 0; i < this.numAlbums; i++) {
 
             System.out.println(this.albums[i].toString());
         }
@@ -152,22 +142,23 @@ public class Collection {
 
     public void printByReleaseDate()
     {
+        if(numAlbums == 0) {
+            System.out.println("The collection is empty!");
+            return;
+        }
+
         Album[] copyOfAlbum = new Album[this.albums.length];
         Date[] dates = new Date[this.albums.length]; //assuming everything is set to null by default
-        for(int i = 0; i < this.albums.length; i++)
-        {
+        for(int i = 0; i < this.albums.length; i++) {
             copyOfAlbum[i] = this.albums[i];
-            if(this.albums[i] != null)
-            {
+            if(this.albums[i] != null) {
                 dates[i] = this.albums[i].getReleaseDate();
                 //use setter/getter methods for getting
             }
         }
         insertionSort(dates, copyOfAlbum);
 
-        for(int i = 0; i < this.numAlbums; i++)
-        {
-
+        for(int i = 0; i < this.numAlbums; i++) {
             System.out.println(copyOfAlbum[i].toString());
         }
 
@@ -178,22 +169,22 @@ public class Collection {
 
     public void printByGenre() //fix this method??
     {
+        if(numAlbums == 0) {
+            System.out.println("The collection is empty!");
+            return;
+        }
         Album[] copyOfAlbum = new Album[this.albums.length];
         Genre[] genres = new Genre[this.albums.length]; //assuming everything is set to null by default
-        for(int i = 0; i < this.albums.length; i++)
-        {
+        for(int i = 0; i < this.albums.length; i++) {
             copyOfAlbum[i] = this.albums[i];
-            if(this.albums[i] != null)
-            {
+            if(this.albums[i] != null) {
                 genres[i] = this.albums[i].getGenre();
                 //use setter/getter methods for getting
             }
         }
 
         insertionSort(genres, copyOfAlbum);
-        for(int i = 0; i < this.numAlbums; i++)
-        {
-
+        for(int i = 0; i < this.numAlbums; i++) {
             System.out.println(copyOfAlbum[i].toString());
         }
 
@@ -202,8 +193,7 @@ public class Collection {
 
     public <T extends Comparable<T>> void insertionSort(T[] arr, Album[] album)
     {
-        for(int i = 0; i < album.length; i++)
-        {
+        for(int i = 0; i < album.length; i++) {
             T key = arr[i];
             Album keyPointer = album[i];
             int j = i-1;
@@ -220,7 +210,5 @@ public class Collection {
             arr[j+1] = key;
             album[j+1] = keyPointer;
         }
-
     }
-
 }
