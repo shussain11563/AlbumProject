@@ -2,6 +2,15 @@ public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
 
+
+    public Collection()
+    {
+        this.numAlbums = 0;
+        int initialCapacity = 4;
+        this.albums = new Album[initialCapacity];
+
+    }
+
     private int find(Album album)
     {
         //might have to use album methods to check the album attributes
@@ -210,8 +219,5 @@ public class Collection {
         }
 
     }
-
-
-
 
 }
