@@ -71,10 +71,20 @@ public class Album {
 
         Album album = (Album) obj;
         //might use helper method
+
+        if(!(this.title.equals(album.title)) && !(this.artist.equals(album.artist)))
+        Fix{
+            return isEqual;
+        }
+
+
+        /*
         if(!(this.title.equals(album.title)) && !(this.artist.equals(album.artist)) && !(this.genre.equals(album.genre)) && (this.releaseDate.compareTo(album.releaseDate)) != 0)
         {
             return isEqual;
         }
+        */
+
         isEqual = true;
         return isEqual;
     }
