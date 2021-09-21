@@ -50,6 +50,11 @@ public class Album {
         return this.isAvailable;
     }
 
+    public void setAvailable(boolean isAvailable)
+    {
+        this.isAvailable = isAvailable;
+    }
+
     @Override
     public boolean equals(Object obj)
     {

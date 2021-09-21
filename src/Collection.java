@@ -90,7 +90,18 @@ public class Collection {
     {
         int albumIndex = this.find(album);
 
-        return true;
+        if(albumIndex >=0 && album.getAvailability()==true)
+        {
+
+            this.albums[albumIndex].setAvailable(false);
+            return true;
+        }
+        else
+        {
+            return false; //not avaialble, already lended out
+        }
+
+
 
 
         //if not available, set message to not available
@@ -100,7 +111,17 @@ public class Collection {
 
     public boolean returnAlbum(Album album)
     {
-        return false;
+        int albumIndex = this.find(album);
+
+        if(albumIndex >=0 && album.getAvailability()==false)
+        {
+            this.albums[albumIndex].setAvailable(true);
+            return true;
+        }
+        else
+        {
+            return false; //not avaialble, already lended out
+        }
     } //set to available
 
     public void print()
