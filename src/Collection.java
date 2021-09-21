@@ -49,8 +49,11 @@ public class Collection {
     public boolean add(Album album)
     {
         //return false if the album already exists
-        if(find(album) != -1)
+        if(find(album) >= 0)
+        {
             return false;
+        }
+
         // change to numAlbums == this.album.length
         if(albums == null || numAlbums == this.albums.length)
         {
