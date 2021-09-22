@@ -68,7 +68,8 @@ public class Album {
 
         Album album = (Album) obj;
         //might use helper method
-        if(!(this.title.equals(album.title)) && !(this.artist.equals(album.artist))) {
+
+        if((!(this.title.equals(album.title)) && (this.artist.equals(album.artist)))) {
             return isEqual;
         }
 

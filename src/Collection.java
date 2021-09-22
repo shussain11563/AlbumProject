@@ -18,11 +18,13 @@ public class Collection {
 
         //we can always use a helper method to iterate because of remove
         for(int i = 0; i < this.numAlbums; i++) {
-            //check if its not null
-            if(this.albums[i] != null && this.albums[i].equals(album)) {
+            // check if its not null
+
+            if(this.albums[i] != null && this.albums[i].getTitle().equals(album.getTitle()) && this.albums[i].getArtist().equals(album.getArtist())) {
                 return i;
             }
         }
+
         return -1;
     }
 
@@ -135,7 +137,9 @@ public class Collection {
 
             System.out.println(this.albums[i].toString());
         }
-    } //display the list without specifying the order
+        System.out.println("*End of list");
+    }
+
 
 
     //generic for copying data?
