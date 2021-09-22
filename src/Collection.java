@@ -156,6 +156,7 @@ public class Collection {
             System.out.println("The collection is empty!");
             return;
         }
+        System.out.println("*Album collection by the release dates.");
 
         Album[] copyOfAlbum = new Album[this.albums.length];
         Date[] dates = new Date[this.albums.length]; //assuming everything is set to null by default
@@ -171,6 +172,7 @@ public class Collection {
         for(int i = 0; i < this.numAlbums; i++) {
             System.out.println(copyOfAlbum[i].toString());
         }
+        System.out.println("*End of list");
 
 
 
@@ -183,6 +185,7 @@ public class Collection {
             System.out.println("The collection is empty!");
             return;
         }
+        System.out.println("*Album collection by genre.");
         Album[] copyOfAlbum = new Album[this.albums.length];
         Genre[] genres = new Genre[this.albums.length]; //assuming everything is set to null by default
         for(int i = 0; i < this.albums.length; i++) {
@@ -197,6 +200,7 @@ public class Collection {
         for(int i = 0; i < this.numAlbums; i++) {
             System.out.println(copyOfAlbum[i].toString());
         }
+        System.out.println("*End of list");
 
 
     }
@@ -210,7 +214,7 @@ public class Collection {
 
             //while(j>=0 && arr[j] > key         ) //arr[j].compareTo(key) or key.compareTo(arr[j])
             //might switch inequality
-            while(j>=0 && arr[j].compareTo(key)>0)
+            while(j>=0 && arr[j]!=null && key!=null && arr[j].compareTo(key)>0)
             {
                 arr[j+1] = arr[j];
                 album[j+1] = album[j];

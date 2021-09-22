@@ -52,9 +52,9 @@ public class CollectionManager {
             else if(commandLineInput.charAt(0) == 'D' && commandLineInput.charAt(1) == ',')
                 runRemoveAlbum(commandLineInput, albumCollection);
             else if(commandLineInput.charAt(0) == 'L' && commandLineInput.charAt(1) == ',')
-                runLendAlbum(commandLineInput);
+                runLendAlbum(commandLineInput, albumCollection);
             else if(commandLineInput.charAt(0) == 'R' && commandLineInput.charAt(1) == ',')
-                runReturnAlbum(commandLineInput);
+                runReturnAlbum(commandLineInput, albumCollection);
             else if(commandLineInput.equals("Q")) {
                 System.out.println("Collection Manager terminated.");
                 break;
@@ -134,12 +134,12 @@ public class CollectionManager {
         if(albumCollection.remove(tempAlbum))
             System.out.println(tempAlbum.removeToString());
         else
-            System.out.println("Album does not exist.");
+            System.out.println(String.format("%s::%s >> is not in the collection.", tempAlbum.getTitle(), tempAlbum.getArtist()));
 
 
     }
 
-    public void runLendAlbum(String albumDetails) {
+    public void runLendAlbum(String albumDetails, Collection albumCollection) {
         StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
         String title = "";
         String artist = "";
@@ -147,13 +147,25 @@ public class CollectionManager {
         stringTokenizer.nextToken();
         title = stringTokenizer.nextToken();
         artist = stringTokenizer.nextToken();
+
+        Album tempAlbum = new Album(title, artist);
+
+        String message = "";
+        if(albumCollection.lendingOut(tempAlbum))
+            message = String.format("%s::%s >> lending out and set to not available.", tempAlbum.getTitle(), tempAlbum.getArtist());
+        else
+            message = String.format("%s::%s >> is not available.", tempAlbum.getTitle(), tempAlbum.getArtist());
+
+        System.out.println(message);
+
+
 
         //find the album
         //then check lending
 
     }
 
-    public void runReturnAlbum(String albumDetails) {
+    public void runReturnAlbum(String albumDetails, Collection albumCollection) {
         StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
         String title = "";
         String artist = "";
@@ -161,5 +173,24 @@ public class CollectionManager {
         stringTokenizer.nextToken();
         title = stringTokenizer.nextToken();
         artist = stringTokenizer.nextToken();
+
+        Album tempAlbum = new Album(title, artist);
+
+        String message = "";
+        if(albumCollection.returnAlbum(tempAlbum))
+            message = String.format("%s::%s >> returning and set to available.", tempAlbum.getTitle(), tempAlbum.getArtist());
+        else
+            message = String.format("%s::%s >> return cannot be completed.", tempAlbum.getTitle(), tempAlbum.getArtist());
+
+        System.out.println(message);
+
+        /*
+        else
+        {
+
+        }
+            //System.out.println(tempAlbum.removeToString());?????
+            */
+
     }
 }
