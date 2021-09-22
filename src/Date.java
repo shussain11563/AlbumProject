@@ -95,7 +95,14 @@ public class Date implements Comparable<Date>
 
     */
     @Override
-    public int compareTo(Date date) {
+    public int compareTo(Date date)
+    {
+        /*
+        if(date==null)
+        {
+            return -1;
+        }
+        */
         if(this.year < date.year) {
             return -1;
         }
