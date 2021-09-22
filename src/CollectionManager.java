@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -89,8 +90,9 @@ public class CollectionManager {
         stringTokenizer.nextToken();
         title = stringTokenizer.nextToken();
         artist = stringTokenizer.nextToken();
-        genre = stringTokenizer.nextToken();
+        genre = stringTokenizer.nextToken().toLowerCase();
         date = stringTokenizer.nextToken();
+
 
         // Checks if the string genre is one of the Genre's Enum Values, If not then set to Unknown
         if(!(genre.equals("pop") || genre.equals("country") || genre.equals("classical") || genre.equals("jazz"))) {

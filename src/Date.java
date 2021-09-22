@@ -13,7 +13,7 @@ public class Date implements Comparable<Date>
     public static final int QUATERCENTENNIAL = 400;
     public static final int THE_EIGHTYS = 1980;
 
-    //take “mm/dd/yyyy” and create a Date object
+
     public Date(String date) {
         StringTokenizer stringTokenizer = new StringTokenizer(date, "/");
         this.month = Integer.parseInt(stringTokenizer.nextToken());
