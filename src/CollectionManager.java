@@ -108,7 +108,7 @@ public class CollectionManager {
             Album addNewAlbum = new Album(title, artist, addGenre, releaseDate, true);
 
             if(albumCollection.add(addNewAlbum))
-                System.out.println(addNewAlbum.addToString() + " >> added");
+                System.out.println(addNewAlbum.addToString() + " >> added.");
             else
                 System.out.println(addNewAlbum.addToString() + " >> is already in the collection.");
 
