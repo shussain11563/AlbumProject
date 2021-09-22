@@ -67,20 +67,26 @@ public class Collection {
     private void shifting()
     {
         for(int i = 0; i < this.albums.length - 1; i++) {
-
             if(this.albums[i] == null) {
                 this.albums[i] = this.albums[i+1];
+                this.albums[i+1] = null;
             }
         }
     }
 
+    public void printArray() {
+        for(int i = 0; i < numAlbums; i++) {
+            System.out.print(i);
+            System.out.println(this.albums[i]);
+        }
+        System.out.println();
+    }
 
     public boolean remove(Album album)
     {
         boolean isRemoved = false;
         //use the same method we used in find
         int albumIndex = this.find(album);
-
 
         if(albumIndex >= 0) {
             this.albums[albumIndex] = null;

@@ -21,8 +21,6 @@ public class Album {
         this.artist = artist;
 
     }
-
-
     //create setters/getters
     public String getTitle()
     {
