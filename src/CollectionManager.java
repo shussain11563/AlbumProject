@@ -59,7 +59,7 @@ public class CollectionManager {
                 break;
             }
             else
-                System.out.println("Invalid Command!");
+                System.out.println("Invalid command!");
         }
     }
 
@@ -108,7 +108,7 @@ public class CollectionManager {
             Album addNewAlbum = new Album(title, artist, addGenre, releaseDate, true);
 
             if(albumCollection.add(addNewAlbum))
-                System.out.println(addNewAlbum.addToString() + " >> added");
+                System.out.println(addNewAlbum.addToString() + " >> added.");
             else
                 System.out.println(addNewAlbum.addToString() + " >> is already in the collection.");
 
@@ -145,6 +145,10 @@ public class CollectionManager {
         stringTokenizer.nextToken();
         title = stringTokenizer.nextToken();
         artist = stringTokenizer.nextToken();
+
+        //find the album
+        //then check lending
+
     }
 
     public void runReturnAlbum(String albumDetails) {
