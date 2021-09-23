@@ -21,7 +21,6 @@ public class Collection {
                 return i;
             }
         }
-
         return -1;
     }
 
