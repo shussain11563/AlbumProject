@@ -2,20 +2,17 @@ public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
 
-
     public Collection()
     {
         this.numAlbums = 0;
         int initialCapacity = 4;
         this.albums = new Album[initialCapacity];
-
     }
 
     private int find(Album album)
     {
         //might have to use album methods to check the album attributes
         //change i to something descriptive
-
         //we can always use a helper method to iterate because of remove
         for(int i = 0; i < this.numAlbums; i++) {
             // check if its not null
@@ -58,7 +55,6 @@ public class Collection {
 
         this.albums[this.numAlbums] = album;
         //inserting album
-
         this.numAlbums++;
         return true;
     }
@@ -72,14 +68,6 @@ public class Collection {
                 this.albums[i+1] = null;
             }
         }
-    }
-
-    public void printArray() {
-        for(int i = 0; i < numAlbums; i++) {
-            System.out.print(i);
-            System.out.println(this.albums[i]);
-        }
-        System.out.println();
     }
 
     public boolean remove(Album album)
@@ -102,17 +90,12 @@ public class Collection {
         int albumIndex = this.find(album);
 
         if(albumIndex >=0 && album.getAvailability()==true) {
-
             this.albums[albumIndex].setAvailable(false);
             return true;
         }
         else {
             return false; //not avaialble, already lended out
         }
-
-
-
-
         //if not available, set message to not available
 
 
@@ -147,7 +130,6 @@ public class Collection {
     }
 
 
-
     //generic for copying data?
 
     public void printByReleaseDate()
@@ -174,9 +156,6 @@ public class Collection {
         }
         System.out.println("*End of list");
 
-
-
-        //
     }
 
     public void printByGenre() //fix this method??
@@ -202,7 +181,6 @@ public class Collection {
         }
         System.out.println("*End of list");
 
-
     }
 
     public <T extends Comparable<T>> void insertionSort(T[] arr, Album[] album)
@@ -213,7 +191,6 @@ public class Collection {
             int j = i-1;
 
             //while(j>=0 && arr[j] > key         ) //arr[j].compareTo(key) or key.compareTo(arr[j])
-            //might switch inequality
             while(j>=0 && arr[j]!=null && key!=null && arr[j].compareTo(key)>0)
             {
                 arr[j+1] = arr[j];
