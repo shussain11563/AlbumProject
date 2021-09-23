@@ -5,8 +5,7 @@ public class Album {
     private Date releaseDate;
     private boolean isAvailable;
 
-    public Album(String title, String artist, Genre genre, Date releaseDate, boolean isAvailable)
-    {
+    public Album(String title, String artist, Genre genre, Date releaseDate, boolean isAvailable) {
         this.title = title;
         this.artist = artist;
         this.genre = genre;
@@ -15,8 +14,7 @@ public class Album {
 
     }
 
-    public Album(String title, String artist)
-    {
+    public Album(String title, String artist) {
         this.title = title;
         this.artist = artist;
 
@@ -52,8 +50,7 @@ public class Album {
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         boolean isEqual = false;
         if (obj == this) {
             return true;
