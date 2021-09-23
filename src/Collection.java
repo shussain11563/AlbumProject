@@ -1,3 +1,6 @@
+/**
+ * @author Sharia Hussain, David Lam
+ */
 public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
