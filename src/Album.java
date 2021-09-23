@@ -81,7 +81,6 @@ public class Album {
 
     public String removeToString() {
         return String.format("%s::%s >> deleted." , this.title, this.artist);
-
     }
 
     public String addToString() {

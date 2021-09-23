@@ -106,16 +106,19 @@ public class Date implements Comparable<Date>
         if(this.year < date.year) {
             return -1;
         }
-        else if(this.year == date.year) {
+        else if(this.year == date.year)
+        {
 
             if(this.month < date.month) {
                 return -1;
             }
-            else if(this.month == date.month) {
-                if(this.day < this.day) {
+            else if(this.month == date.month)
+            {
+                if(this.day < date.day)
+                {
                     return -1;
                 }
-                else if(this.day == this.day) {
+                else if(this.day == date.day) {
                     return 0;
                 }
             }

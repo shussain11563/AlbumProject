@@ -2,18 +2,16 @@ public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
 
-
-    public Collection() {
+    public Collection()
+    {
         this.numAlbums = 0;
         int initialCapacity = 4;
         this.albums = new Album[initialCapacity];
-
     }
 
     private int find(Album album) {
         //might have to use album methods to check the album attributes
         //change i to something descriptive
-
         //we can always use a helper method to iterate because of remove
         for(int i = 0; i < this.numAlbums; i++) {
             // check if its not null
@@ -52,7 +50,6 @@ public class Collection {
 
         this.albums[this.numAlbums] = album;
         //inserting album
-
         this.numAlbums++;
         return true;
     }
@@ -66,7 +63,8 @@ public class Collection {
         }
     }
 
-    public boolean remove(Album album) {
+    public boolean remove(Album album)
+    {
         boolean isRemoved = false;
         //use the same method we used in find
         int albumIndex = this.find(album);
@@ -83,14 +81,16 @@ public class Collection {
     public boolean lendingOut(Album album) {
         int albumIndex = this.find(album);
 
-        if(albumIndex >= 0 && album.getAvailability() == true) {
-
+        if(albumIndex >=0 && album.getAvailability()==true) {
             this.albums[albumIndex].setAvailable(false);
             return true;
         }
         else {
             return false; //not avaialble, already lended out
         }
+        //if not available, set message to not available
+
+
     } //set to not available
 
     public boolean returnAlbum(Album album) {
@@ -119,7 +119,11 @@ public class Collection {
         System.out.println("*End of list");
     }
 
-    public void printByReleaseDate() {
+
+    //generic for copying data?
+
+    public void printByReleaseDate()
+    {
         if(numAlbums == 0) {
             System.out.println("The collection is empty!");
             return;
@@ -175,8 +179,7 @@ public class Collection {
             int j = i-1;
 
             //while(j>=0 && arr[j] > key         ) //arr[j].compareTo(key) or key.compareTo(arr[j])
-            //might switch inequality
-            while(j >= 0 && arr[j] != null && key != null && arr[j].compareTo(key) > 0)
+            while(j>=0 && arr[j]!=null && key!=null && arr[j].compareTo(key)>0)
             {
                 arr[j + 1] = arr[j];
                 album[j + 1] = album[j];
