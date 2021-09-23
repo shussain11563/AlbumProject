@@ -1,3 +1,6 @@
+/**
+ * @author Sharia Hussain, David Lam
+ */
 public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
@@ -10,9 +13,7 @@ public class Collection {
     }
 
     private int find(Album album) {
-        //might have to use album methods to check the album attributes
         //change i to something descriptive
-        //we can always use a helper method to iterate because of remove
         for(int i = 0; i < this.numAlbums; i++) {
             // check if its not null
 
@@ -20,16 +21,15 @@ public class Collection {
                 return i;
             }
         }
-
         return -1;
     }
 
     private void grow() {
         // check if the Albums[] is null, then inititates the starter array
-
+        int growthFactor = 4;
         Album[] oldAlbumsCollection = albums;
         int oldAlbumsArrayLength = albums.length;
-        this.albums = new Album[albums.length+4]; //4 is a magic number
+        this.albums = new Album[albums.length+growthFactor]; //4 is a magic number
 
         // Copy oldAlbum into bigger Albums[]
         for(int i = 0; i < oldAlbumsArrayLength; i++) {
@@ -66,7 +66,7 @@ public class Collection {
     public boolean remove(Album album)
     {
         boolean isRemoved = false;
-        //use the same method we used in find
+
         int albumIndex = this.find(album);
 
         if(albumIndex >= 0) {
@@ -120,8 +120,6 @@ public class Collection {
     }
 
 
-    //generic for copying data?
-
     public void printByReleaseDate()
     {
         if(numAlbums == 0) {
@@ -136,7 +134,6 @@ public class Collection {
             copyOfAlbum[i] = this.albums[i];
             if(this.albums[i] != null) {
                 dates[i] = this.albums[i].getReleaseDate();
-                //use setter/getter methods for getting
             }
         }
         insertionSort(dates, copyOfAlbum);
@@ -145,7 +142,6 @@ public class Collection {
             System.out.println(copyOfAlbum[i].toString());
         }
         System.out.println("*End of list");
-
     }
 
     public void printByGenre() {
@@ -155,12 +151,11 @@ public class Collection {
         }
         System.out.println("*Album collection by genre.");
         Album[] copyOfAlbum = new Album[this.albums.length];
-        Genre[] genres = new Genre[this.albums.length]; //assuming everything is set to null by default
+        Genre[] genres = new Genre[this.albums.length];
         for(int i = 0; i < this.albums.length; i++) {
             copyOfAlbum[i] = this.albums[i];
             if(this.albums[i] != null) {
                 genres[i] = this.albums[i].getGenre();
-                //use setter/getter methods for getting
             }
         }
 
@@ -178,7 +173,6 @@ public class Collection {
             Album keyPointer = album[i];
             int j = i-1;
 
-            //while(j>=0 && arr[j] > key         ) //arr[j].compareTo(key) or key.compareTo(arr[j])
             while(j>=0 && arr[j]!=null && key!=null && arr[j].compareTo(key)>0)
             {
                 arr[j + 1] = arr[j];

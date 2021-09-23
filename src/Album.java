@@ -1,3 +1,7 @@
+/**
+ * @author Sharia Hussain, David Lam
+ */
+
 public class Album {
     private String title;
     private String artist;
@@ -71,21 +75,13 @@ public class Album {
         isEqual = true;
         return isEqual;
     }
-
     @Override
     public String toString() {
         String availability = (this.isAvailable) ? "is available" : "is not available";
         return String.format("%s::%s::%s::%s::%s", this.title, this.artist, this.genre, this.releaseDate, availability);
-
     }
 
     public String removeToString() {
         return String.format("%s::%s >> deleted." , this.title, this.artist);
-    }
-
-    public String addToString() {
-        String availability = (this.isAvailable) ? "is available" : "is not available";
-        return String.format("%s::%s::%s::%s::%s", this.title, this.artist, this.genre, this.releaseDate, availability);
-
     }
 }

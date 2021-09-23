@@ -1,3 +1,7 @@
+/**
+ * @author Sharia Hussain, David Lam
+ */
+
 import java.util.StringTokenizer;
 import java.util.Calendar;
 

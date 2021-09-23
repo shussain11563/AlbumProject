@@ -1,3 +1,7 @@
+/**
+ * @author Sharia Hussain, David Lam
+ */
+
 public class RunProject1
 {
     public static void main(String args[]) {
