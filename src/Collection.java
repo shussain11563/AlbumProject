@@ -82,7 +82,7 @@ public class Collection {
     public boolean lendingOut(Album album) {
         int albumIndex = this.find(album);
 
-        if(albumIndex >=0 && album.getAvailability()==true) {
+        if(albumIndex >=0 && this.albums[albumIndex].getAvailability()==true) {
             this.albums[albumIndex].setAvailable(false);
             return true;
         }
@@ -97,7 +97,7 @@ public class Collection {
     public boolean returnAlbum(Album album) {
         int albumIndex = this.find(album);
 
-        if(albumIndex >= 0 && album.getAvailability() == false) {
+        if(albumIndex >= 0 && this.albums[albumIndex].getAvailability() == false) {
             this.albums[albumIndex].setAvailable(true);
             return true;
         }
@@ -129,18 +129,18 @@ public class Collection {
         }
         System.out.println("*Album collection by the release dates.");
 
-        Album[] copyOfAlbum = new Album[this.albums.length];
+        //Album[] copyOfAlbum = new Album[this.albums.length];
         Date[] dates = new Date[this.albums.length]; //assuming everything is set to null by default
         for(int i = 0; i < this.albums.length; i++) {
-            copyOfAlbum[i] = this.albums[i];
+            //copyOfAlbum[i] = this.albums[i];
             if(this.albums[i] != null) {
                 dates[i] = this.albums[i].getReleaseDate();
             }
         }
-        insertionSort(dates, copyOfAlbum);
+        insertionSort(dates, this.albums);
 
         for(int i = 0; i < this.numAlbums; i++) {
-            System.out.println(copyOfAlbum[i].toString());
+            System.out.println(this.albums[i].toString());
         }
         System.out.println("*End of list");
     }
@@ -151,18 +151,18 @@ public class Collection {
             return;
         }
         System.out.println("*Album collection by genre.");
-        Album[] copyOfAlbum = new Album[this.albums.length];
+        //Album[] copyOfAlbum = new Album[this.albums.length];
         Genre[] genres = new Genre[this.albums.length];
         for(int i = 0; i < this.albums.length; i++) {
-            copyOfAlbum[i] = this.albums[i];
+            //copyOfAlbum[i] = this.albums[i];
             if(this.albums[i] != null) {
                 genres[i] = this.albums[i].getGenre();
             }
         }
 
-        insertionSort(genres, copyOfAlbum);
+        insertionSort(genres, this.albums);
         for(int i = 0; i < this.numAlbums; i++) {
-            System.out.println(copyOfAlbum[i].toString());
+            System.out.println(this.albums[i].toString());
         }
         System.out.println("*End of list");
 
