@@ -1,3 +1,7 @@
+/**
+ * @author Sharia Hussain, David Lam
+ */
+
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -84,9 +88,9 @@ public class CollectionManager {
             Album addNewAlbum = new Album(title, artist, addGenre, releaseDate, true);
 
             if(albumCollection.add(addNewAlbum))
-                System.out.println(addNewAlbum.addToString() + " >> added.");
+                System.out.println(addNewAlbum.toString() + " >> added.");
             else
-                System.out.println(addNewAlbum.addToString() + " >> is already in the collection.");
+                System.out.println(addNewAlbum.toString() + " >> is already in the collection.");
 
         }
         else{
