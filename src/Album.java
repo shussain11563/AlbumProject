@@ -9,6 +9,15 @@ public class Album {
     private Date releaseDate;
     private boolean isAvailable;
 
+    /**
+     *
+     * @param title the title of the Album
+     * @param artist the artist of
+     * @param genre
+     * @param releaseDate
+     * @param isAvailable
+     * @return
+     */
     public Album(String title, String artist, Genre genre, Date releaseDate, boolean isAvailable) {
         this.title = title;
         this.artist = artist;
@@ -17,6 +26,7 @@ public class Album {
         this.isAvailable = isAvailable;
 
     }
+
 
     public Album(String title, String artist) {
         this.title = title;
@@ -38,6 +48,10 @@ public class Album {
         return this.genre;
     }
 
+    /**\
+     *
+     * @return
+     */
     public Date getReleaseDate()
     {
         return this.releaseDate;
@@ -48,6 +62,10 @@ public class Album {
         return this.isAvailable;
     }
 
+    /**
+     *
+     * @param isAvailable
+     */
     public void setAvailable(boolean isAvailable)
     {
         this.isAvailable = isAvailable;

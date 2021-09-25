@@ -12,6 +12,11 @@ public class Collection {
         this.albums = new Album[initialCapacity];
     }
 
+    /**
+     *
+     * @param album
+     * @return position of album in albums array, returns -1 if not found
+     */
     private int find(Album album) {
         //change i to something descriptive
         //we can always use a helper method to iterate because of remove
@@ -25,6 +30,10 @@ public class Collection {
         return -1;
     }
 
+    /**
+     * Grows the albums array by 4.
+     * grow() is called in add() when the album array is full.
+     */
     private void grow() {
         // check if the Albums[] is null, then inititates the starter array
         int growthFactor = 4;
@@ -38,23 +47,32 @@ public class Collection {
         }
     } //increase the capacity of the array list by 4
 
+    /**
+     *
+     * @param album
+     * @return
+     */
     public boolean add(Album album) {
-        //return false if the album already exists
+        // return false if the album already exists
         if(find(album) >= 0) {
             return false;
         }
 
-        // change to numAlbums == this.album.length
+        // calls grow() to expand the albums array
         if(albums == null || numAlbums == this.albums.length) {
             grow();
         }
 
+        // inserting album and incrementing count
         this.albums[this.numAlbums] = album;
-        //inserting album
         this.numAlbums++;
         return true;
     }
 
+    /**
+     *s T
+     *
+     */
     private void shifting() {
         for(int i = 0; i < this.albums.length - 1; i++) {
             if(this.albums[i] == null) {
@@ -64,6 +82,11 @@ public class Collection {
         }
     }
 
+    /**
+     *
+     * @param album
+     * @return true is removing an album from the albums array is successful, returns false otherwise or if album is not found
+     */
     public boolean remove(Album album)
     {
         boolean isRemoved = false;
@@ -79,6 +102,11 @@ public class Collection {
         return isRemoved;
     }
 
+    /**
+     *
+     * @param album
+     * @return true if
+     */
     public boolean lendingOut(Album album) {
         int albumIndex = this.find(album);
 
@@ -94,6 +122,11 @@ public class Collection {
 
     } //set to not available
 
+    /**
+     *
+     * @param album
+     * @return
+     */
     public boolean returnAlbum(Album album) {
         int albumIndex = this.find(album);
 
@@ -106,6 +139,9 @@ public class Collection {
         }
     } //set to available
 
+    /**
+     * Prints each album's information in the albums array.
+     */
     public void print() {
         if(numAlbums == 0) {
             System.out.println("The collection is empty!");
@@ -121,6 +157,9 @@ public class Collection {
     }
 
 
+    /**
+     *
+     */
     public void printByReleaseDate()
     {
         if(numAlbums == 0) {
@@ -129,10 +168,9 @@ public class Collection {
         }
         System.out.println("*Album collection by the release dates.");
 
-        //Album[] copyOfAlbum = new Album[this.albums.length];
         Date[] dates = new Date[this.albums.length]; //assuming everything is set to null by default
         for(int i = 0; i < this.albums.length; i++) {
-            //copyOfAlbum[i] = this.albums[i];
+
             if(this.albums[i] != null) {
                 dates[i] = this.albums[i].getReleaseDate();
             }
@@ -145,6 +183,9 @@ public class Collection {
         System.out.println("*End of list");
     }
 
+    /**
+     * Sorts and modifies the album array by Genre. Prints the modified array.
+     */
     public void printByGenre() {
         if(numAlbums == 0) {
             System.out.println("The collection is empty!");
@@ -168,6 +209,13 @@ public class Collection {
 
     }
 
+    /**
+     * Sorts the album array by
+     *
+     * @param arr
+     * @param album
+     * @param <T>
+     */
     public <T extends Comparable<T>> void insertionSort(T[] arr, Album[] album) {
         for(int i = 0; i < album.length; i++) {
             T key = arr[i];
