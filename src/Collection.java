@@ -87,9 +87,9 @@ public class Collection {
     }
 
     /**
-     *
+     * Removes a specified album from the albums array.
      * @param album
-     * @return true is removing an album from the albums array is successful, returns false otherwise or if album is not found
+     * @return true if removing an album from the albums array is successful, returns false otherwise or if album is not found
      */
     public boolean remove(Album album)
     {
@@ -162,7 +162,7 @@ public class Collection {
 
 
     /**
-     * Sorts and modifies the album array by Genre. Prints the modified array.
+     * Sorts and modifies the album array by release date from oldest to recent. Prints the modified array.
      */
     public void printByReleaseDate()
     {
