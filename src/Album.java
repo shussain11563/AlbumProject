@@ -28,35 +28,53 @@ public class Album {
     }
 
 
+
     public Album(String title, String artist) {
         this.title = title;
         this.artist = artist;
 
     }
     //create setters/getters
+
+    /**
+     *
+     * @return the title of the album.
+     */
     public String getTitle()
     {
         return this.title;
     }
 
+    /**
+     *
+     * @return the name of the artist of the album.
+     */
     public String getArtist()
     {
         return this.artist;
     }
 
+    /**
+     *
+     * @return the Genre type of the album.
+     */
     public Genre getGenre() {
         return this.genre;
     }
 
     /**\
      *
-     * @return
+     * @return the release date of the album.
      */
     public Date getReleaseDate()
     {
         return this.releaseDate;
     }
 
+    /**
+     *
+     * @return the availability of the album for lending.
+     */
     public boolean getAvailability()
     {
         return this.isAvailable;
@@ -84,7 +102,6 @@ public class Album {
          */
 
         Album album = (Album) obj;
-        //might use helper method
 
         if(!(this.title.equals(album.title)) || !(this.artist.equals(album.artist))) {
             return isEqual;
@@ -93,6 +110,7 @@ public class Album {
         isEqual = true;
         return isEqual;
     }
+
     @Override
     public String toString() {
         String availability = (this.isAvailable) ? "is available" : "is not available";

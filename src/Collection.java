@@ -5,6 +5,10 @@ public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
 
+    /**
+     * Collection Constructo
+     * Initializes an albums array to 4.
+     */
     public Collection()
     {
         this.numAlbums = 0;
@@ -70,8 +74,8 @@ public class Collection {
     }
 
     /**
-     *s T
-     *
+     * shifting() is called after a removal in album is done in remove().
+     * Keeps the albums array contiguous with no gaps by shifting.
      */
     private void shifting() {
         for(int i = 0; i < this.albums.length - 1; i++) {
@@ -83,9 +87,9 @@ public class Collection {
     }
 
     /**
-     *
+     * Removes a specified album from the albums array.
      * @param album
-     * @return true is removing an album from the albums array is successful, returns false otherwise or if album is not found
+     * @return true if removing an album from the albums array is successful, returns false otherwise or if album is not found
      */
     public boolean remove(Album album)
     {
@@ -158,7 +162,7 @@ public class Collection {
 
 
     /**
-     *
+     * Sorts and modifies the album array by release date from oldest to recent. Prints the modified array.
      */
     public void printByReleaseDate()
     {
@@ -216,7 +220,7 @@ public class Collection {
      * @param album
      * @param <T>
      */
-    public <T extends Comparable<T>> void insertionSort(T[] arr, Album[] album) {
+    private <T extends Comparable<T>> void insertionSort(T[] arr, Album[] album) {
         for(int i = 0; i < album.length; i++) {
             T key = arr[i];
             Album keyPointer = album[i];
