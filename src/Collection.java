@@ -6,7 +6,7 @@ public class Collection {
     private int numAlbums; //number of albums currently in the collection
 
     /**
-     * Collection Constructo
+     * Collection Constructor
      * Initializes an albums array to 4.
      */
     public Collection()

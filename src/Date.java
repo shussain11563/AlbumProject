@@ -23,6 +23,9 @@ public class Date implements Comparable<Date>
     public static final int DAY_MAX_LEAPYEAR = 29;
     public static final int DAY_MAX_NOT_LEAPYEAR = 28;
 
+    /**
+     * Date constructor that takes in a Date Object
+     */
     public Date(String date) {
         StringTokenizer stringTokenizer = new StringTokenizer(date, "/");
         this.month = Integer.parseInt(stringTokenizer.nextToken());
@@ -30,7 +33,9 @@ public class Date implements Comparable<Date>
         this.year = Integer.parseInt(stringTokenizer.nextToken());
     }
 
-    //create an object with today’s date (see Calendar class)
+    /**
+     * Date constructor that initializes the instance variables to the present date
+     */
     public Date() {
         Calendar currentDate = Calendar.getInstance();
         this.month = currentDate.get(Calendar.MONTH) + 1;
