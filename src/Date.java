@@ -7,7 +7,6 @@ import java.util.Calendar;
 
 public class Date implements Comparable<Date>
 {
-
     private final int month;
     private final int day;
     private final int year;
@@ -16,7 +15,13 @@ public class Date implements Comparable<Date>
     public static final int CENTENNIAL = 100;
     public static final int QUATERCENTENNIAL = 400;
     public static final int THE_EIGHTYS = 1980;
-
+    public static final int MONTH_MIN = 1;
+    public static final int MONTH_MAX = 12;
+    public static final int DAY_MIN = 1;
+    public static final int DAY_MAX_THIRTHY = 30;
+    public static final int DAY_MAX_THIRTHY_ONE = 31;
+    public static final int DAY_MAX_LEAPYEAR = 29;
+    public static final int DAY_MAX_NOT_LEAPYEAR = 28;
 
     public Date(String date) {
         StringTokenizer stringTokenizer = new StringTokenizer(date, "/");
@@ -26,64 +31,54 @@ public class Date implements Comparable<Date>
     }
 
     //create an object with today’s date (see Calendar class)
-    public Date()
-    {
+    public Date() {
         Calendar currentDate = Calendar.getInstance();
         this.month = currentDate.get(Calendar.MONTH) + 1;
         this.day = currentDate.get(Calendar.DATE);
         this.year = currentDate.get(Calendar.YEAR);
     }
 
-
-    /*
-        ?) Check if the date is beyond the current Date
-        1) Check if Month is between 1 and 12
-        2) Check if the Date matches the month
-            * if month % 2 == 1 then its 31 days
-            * if month % 2 == 0 && month == 2 then its 28/29 days
-                * check if leap year
-            * if month % 2 == 0 then its 30 days
-
-        3) Check if the date is >= 1980
-    */
+    /**
+     * Method that checks the validity of the date
+     *  1) Check if the date is beyond the current Date
+     *  2) Check if Month is between 1 and 12
+     *  3) Check if the Date matches the month
+     *      if month % 2 == 1 then its 31 days
+     *      if month % 2 == 0 && month == 2 then its 28/29 days
+     *          check if leap year
+     *      if month % 2 == 0 then its 30 days
+     *  4) Check if the date is >= 1980
+     * @return Returns true if the date is valid and false if the date is not valid
+     */
     public boolean isValid() {
-        /*
-
-        System.out.println("Month: " + this.month);
-        System.out.println("Day: " + this.day);
-        System.out.println("Year: " + this.year);
-
-        */
-
-        Calendar currentDate = Calendar.getInstance();
         if(this.year < THE_EIGHTYS) {
             return false;
         }
-        else if(this.month >= 1 && this.month <= 12) {
+        else if(this.month >= MONTH_MIN && this.month <= MONTH_MAX) {
             if(this.month % 2 == 1) {
-                return (this.day >= 1 && this.day <= 31);
+                return (this.day >= DAY_MIN && this.day <= DAY_MAX_THIRTHY_ONE);
             }
             else if(this.month % 2 == 0 && this.month == 2) {
                 if(this.year % QUADRENNIAL == 0) {
                     if(this.year % CENTENNIAL == 0) {
                         if(this.year % QUATERCENTENNIAL == 0) {
-                            return (this.day >= 1 && this.day <= 29);
+                            return (this.day >= DAY_MIN && this.day <= DAY_MAX_LEAPYEAR);
                         }
                         else {
-                            return (this.day >= 1 && this.day <= 28);
+                            return (this.day >= DAY_MIN && this.day <= DAY_MAX_NOT_LEAPYEAR);
                         }
                     }
                     else {
-                        return (this.day >= 1 && this.day <= 29);
+                        return (this.day >= DAY_MIN && this.day <= DAY_MAX_LEAPYEAR);
                     }
 
                 }
                 else {
-                    return (this.day >= 1 && this.day <= 28);
+                    return (this.day >= DAY_MIN && this.day <= DAY_MAX_NOT_LEAPYEAR);
                 }
             }
             else {
-                return (this.day >= 1 && this.day <= 30);
+                return (this.day >= DAY_MIN && this.day <= DAY_MAX_THIRTHY);
             }
         }
         else {
@@ -91,13 +86,11 @@ public class Date implements Comparable<Date>
         }
     }
 
-    /*
-
-    Returns -1 if Date1 < Date2
-    Returns 0 if Date1 == Date2
-    Return 1 if Date1 > Date2
-
-    */
+    /**
+     * Method that compares two date objects and returns based on which dates are the same, before, or after.
+     * @param date object
+     * @return Returns -1 if Date1 < Date2, Returns 0 if Date1 == Date2, and Returns 1 if Date1 > Date2
+     */
     @Override
     public int compareTo(Date date)
     {
@@ -112,7 +105,6 @@ public class Date implements Comparable<Date>
         }
         else if(this.year == date.year)
         {
-
             if(this.month < date.month) {
                 return -1;
             }
@@ -134,7 +126,10 @@ public class Date implements Comparable<Date>
         return 10;
     }
 
-    //are we allowed to even have a toString method
+    /**
+     * Method that returns a formatted string of the Date Object
+     * @return Returns a formatted string in the format of Month/Day/Year
+     */
     @Override
     public String toString()
     {
