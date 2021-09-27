@@ -128,8 +128,8 @@ public class Album {
     }
 
     /**
-     * ??????
-     * ????
+     * Method that retuns a formated String of the album being deleted.
+     * @return a textual representation of the deleted Album's information
      */
     public String removeToString() {
         return String.format("%s::%s >> deleted." , this.title, this.artist);
