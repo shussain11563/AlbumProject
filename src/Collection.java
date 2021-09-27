@@ -89,8 +89,8 @@ public class Collection {
 
     /**
      * Removes a specified album from the albums array.
-     * @param album the album to remove from the Collection
-     * @return true if removing an album from the albums array is successful, returns false otherwise
+     * @param album the album to remove from the Collection.
+     * @return true if removing an album from the albums array is successful, returns false otherwise.
      */
     public boolean remove(Album album)
     {
@@ -108,9 +108,9 @@ public class Collection {
     }
 
     /**
-     *
+     * Lends out an Album from the Collection.
      * @param album the album to lend out.
-     * @return true if the album is available, false if the album is not available/already lended out
+     * @return true if the album is available, false if the album is not available/already lended out.
      */
     public boolean lendingOut(Album album) {
         int albumIndex = this.find(album);
@@ -128,7 +128,8 @@ public class Collection {
     } //set to not available
 
     /**
-     *
+     * ???????
+     *  Returns an album for lending.
      * @param album the album to return.
      * @return true if the album is returning an album was successful, false otherwise.
      */
@@ -217,7 +218,7 @@ public class Collection {
      * Used to sort by release date and genre.
      * @param arr array which the sorting is applied
      * @param albums the album collection to sort.
-     * @param <T> generic used to access generic's compareTo() function
+     * @param <T> generic used to access generic's compareTo() function.
      */
     private <T extends Comparable<T>> void insertionSort(T[] arr, Album[] albums) {
         for(int i = 0; i < albums.length; i++) {

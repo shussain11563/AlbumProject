@@ -1,4 +1,5 @@
 /**
+ * ??????????
  * @author Sharia Hussain, David Lam
  */
 
@@ -10,13 +11,13 @@ public class Album {
     private boolean isAvailable;
 
     /**
-     *
-     * @param title the title of the Album
-     * @param artist the artist of the Album
-     * @param genre the genre of the Album
-     * @param releaseDate the release date of the Album
-     * @param isAvailable the status of the Album's availability to lent out
-     * @return
+     * Constructs and initializes an Album object.
+     * Initializes title, artist, genre, release date, availability.
+     * @param title the title of the Album.
+     * @param artist the artist of the Album.
+     * @param genre the genre of the Album.
+     * @param releaseDate the release date of the Album.
+     * @param isAvailable the status of the Album's availability to lent out.
      */
     public Album(String title, String artist, Genre genre, Date releaseDate, boolean isAvailable) {
         this.title = title;
@@ -26,12 +27,15 @@ public class Album {
         this.isAvailable = isAvailable;
     }
 
+    /**
+     * ?????????
+     * @param title
+     * @param artist
+     */
     public Album(String title, String artist) {
         this.title = title;
         this.artist = artist;
-
     }
-    //create setters/getters
 
     /**
      * Retrieves the title of the Album.
@@ -87,8 +91,8 @@ public class Album {
     }
 
     /**
-     *
-     * @param obj
+     * Overridden equals method that allows Album objects to be compared.
+     * @param obj the object to compare with.
      * @return true if an Album is equal, false otherwise
      */
     @Override
@@ -114,6 +118,7 @@ public class Album {
     }
 
     /**
+     * Overrides toString method to represent Album objects.
      * @return a textual representation of the Album's information
      */
     @Override
@@ -122,6 +127,10 @@ public class Album {
         return String.format("%s::%s::%s::%s::%s", this.title, this.artist, this.genre, this.releaseDate, availability);
     }
 
+    /**
+     * ??????
+     * ????
+     */
     public String removeToString() {
         return String.format("%s::%s >> deleted." , this.title, this.artist);
     }
