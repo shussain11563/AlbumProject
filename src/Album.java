@@ -12,10 +12,10 @@ public class Album {
     /**
      *
      * @param title the title of the Album
-     * @param artist the artist of
-     * @param genre
-     * @param releaseDate
-     * @param isAvailable
+     * @param artist the artist of the Album
+     * @param genre the genre of the Album
+     * @param releaseDate the release date of the Album
+     * @param isAvailable the status of the Album's availability to lent out
      * @return
      */
     public Album(String title, String artist, Genre genre, Date releaseDate, boolean isAvailable) {
@@ -24,10 +24,7 @@ public class Album {
         this.genre = genre;
         this.releaseDate = releaseDate;
         this.isAvailable = isAvailable;
-
     }
-
-
 
     public Album(String title, String artist) {
         this.title = title;
@@ -37,7 +34,7 @@ public class Album {
     //create setters/getters
 
     /**
-     *
+     * Retrieves the title of the Album.
      * @return the title of the album.
      */
     public String getTitle()
@@ -46,7 +43,7 @@ public class Album {
     }
 
     /**
-     *
+     * Retrieves the name of the artist of the Album.
      * @return the name of the artist of the album.
      */
     public String getArtist()
@@ -55,15 +52,15 @@ public class Album {
     }
 
     /**
-     *
+     * Retrieves the Genre of the Album.
      * @return the Genre type of the album.
      */
     public Genre getGenre() {
         return this.genre;
     }
 
-    /**\
-     *
+    /**
+     * Retrieves the release date of the Album.
      * @return the release date of the album.
      */
     public Date getReleaseDate()
@@ -72,7 +69,7 @@ public class Album {
     }
 
     /**
-     *
+     * Retrieves the availability of the album for lending.
      * @return the availability of the album for lending.
      */
     public boolean getAvailability()
@@ -81,14 +78,19 @@ public class Album {
     }
 
     /**
-     *
-     * @param isAvailable
+     * Changes the availability of the Album.
+     * @param isAvailable the status of the availability of Album to change to
      */
     public void setAvailable(boolean isAvailable)
     {
         this.isAvailable = isAvailable;
     }
 
+    /**
+     *
+     * @param obj
+     * @return true if an Album is equal, false otherwise
+     */
     @Override
     public boolean equals(Object obj) {
         boolean isEqual = false;
@@ -111,6 +113,9 @@ public class Album {
         return isEqual;
     }
 
+    /**
+     * @return a textual representation of the Album's information
+     */
     @Override
     public String toString() {
         String availability = (this.isAvailable) ? "is available" : "is not available";
