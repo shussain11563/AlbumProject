@@ -128,8 +128,7 @@ public class Collection {
     } //set to not available
 
     /**
-     * ???????
-     *  Returns an album for lending.
+     * Returns an album for lending in the Collection.
      * @param album the album to return.
      * @return true if the album is returning an album was successful, false otherwise.
      */
