@@ -4,5 +4,5 @@
  */
 public enum Genre
 {
-    Classical, Country, Jazz, Pop, Unknown;
+    Classical, Country, Jazz, Pop, Unknown; //unknown is used if it does not match any other genres
 }

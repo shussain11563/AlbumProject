@@ -106,11 +106,6 @@ public class Album {
         if (obj == this) {
             return true;
         }
-        /*
-        if (obj == null)
-        {
-            return false
-         */
 
         Album album = (Album) obj;
 
