@@ -25,7 +25,6 @@ public class Collection {
      * @return position of album in albums array, returns -1 if not found
      */
     private int find(Album album) {
-
         for(int i = 0; i < this.numAlbums; i++) {
 
             if(this.albums[i] != null && this.albums[i].getTitle().equals(album.getTitle()) && this.albums[i].getArtist().equals(album.getArtist())) {
@@ -40,7 +39,7 @@ public class Collection {
      * grow() is called in add() when the album collection is full.
      */
     private void grow() {
-        // check if the Albums[] is null, then inititates the starter array
+        //creates an array bigger than the old array
         int growthFactor = 4;
         Album[] oldAlbumsCollection = albums;
         int oldAlbumsArrayLength = albums.length;
@@ -96,13 +95,12 @@ public class Collection {
     public boolean remove(Album album)
     {
         boolean isRemoved = false;
-
         int albumIndex = this.find(album);
 
         if(albumIndex >= 0) {
-            this.albums[albumIndex] = null;
+            this.albums[albumIndex] = null; //removes album
             this.numAlbums--;
-            this.shifting();
+            this.shifting(); //shifts to remove gaps
             isRemoved = true;
         }
         return isRemoved;
@@ -117,16 +115,13 @@ public class Collection {
         int albumIndex = this.find(album);
 
         if(albumIndex >=0 && this.albums[albumIndex].getAvailability()==true) {
-            this.albums[albumIndex].setAvailable(false);
+            this.albums[albumIndex].setAvailable(false);  //set to not available
             return true;
         }
         else {
             return false; //not available, already lent out
         }
-        //if not available, set message to not available
-
-
-    } //set to not available
+    }
 
     /**
      * Returns an album for lending in the Collection.
@@ -137,13 +132,13 @@ public class Collection {
         int albumIndex = this.find(album);
 
         if(albumIndex >= 0 && this.albums[albumIndex].getAvailability() == false) {
-            this.albums[albumIndex].setAvailable(true);
+            this.albums[albumIndex].setAvailable(true); //set to available
             return true;
         }
         else {
-            return false; //not available, already lended out
+            return false; //not available, already returned
         }
-    } //set to available
+    }
 
     /**
      * Prints each album's information in the albums collection.
@@ -173,16 +168,17 @@ public class Collection {
             return;
         }
         System.out.println("*Album collection by the release dates.");
-
-        Date[] dates = new Date[this.albums.length]; //assuming everything is set to null by default
+        //copies dates into Dates array to sort
+        Date[] dates = new Date[this.albums.length];
         for(int i = 0; i < this.albums.length; i++) {
 
             if(this.albums[i] != null) {
                 dates[i] = this.albums[i].getReleaseDate();
             }
         }
-        insertionSort(dates, this.albums);
 
+        //begins sorting and prints albums array
+        insertionSort(dates, this.albums);
         for(int i = 0; i < this.numAlbums; i++) {
             System.out.println(this.albums[i].toString());
         }
@@ -198,13 +194,14 @@ public class Collection {
             return;
         }
         System.out.println("*Album collection by genre.");
+        //copies genre into Genre array to sort
         Genre[] genres = new Genre[this.albums.length];
         for(int i = 0; i < this.albums.length; i++) {
             if(this.albums[i] != null) {
                 genres[i] = this.albums[i].getGenre();
             }
         }
-
+        //begins sorting and prints albums array
         insertionSort(genres, this.albums);
         for(int i = 0; i < this.numAlbums; i++) {
             System.out.println(this.albums[i].toString());
