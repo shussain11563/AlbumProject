@@ -36,7 +36,9 @@ public class CollectionManager {
             String commandLineInput = scanner.nextLine();
             commandLineInput = commandLineInput.trim();
 
-            if(commandLineInput.equals("P"))
+            if(commandLineInput.equals(""))
+                continue;
+            else if(commandLineInput.equals("P"))
                 albumCollection.print();
             else if(commandLineInput.equals("PD"))
                 albumCollection.printByReleaseDate();
@@ -54,6 +56,7 @@ public class CollectionManager {
                 System.out.println("Collection Manager terminated.");
                 break;
             }
+
             else
                 System.out.println("Invalid command!");
         }
