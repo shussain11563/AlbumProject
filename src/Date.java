@@ -214,7 +214,7 @@ public class Date implements Comparable<Date>
 
         // test case #9, check if the month is valid
         // fail
-        date = new Date("1/50/2021");
+        date = new Date("4/31/2016");
         System.out.println("Test Case #9");
         if(date.isValid())
             System.out.println("Pass.");

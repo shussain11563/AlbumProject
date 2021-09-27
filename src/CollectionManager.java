@@ -28,26 +28,36 @@ public class CollectionManager {
 
             if(commandLineInput.equals(""))
                 continue;
-            else if(commandLineInput.equals("P"))
-                albumCollection.print();
-            else if(commandLineInput.equals("PD"))
-                albumCollection.printByReleaseDate();
-            else if(commandLineInput.equals("PG"))
-                albumCollection.printByGenre();
-            else if(commandLineInput.charAt(0) == 'A' && commandLineInput.charAt(1) == ',')
-                runAddAlbum(commandLineInput, albumCollection);
-            else if(commandLineInput.charAt(0) == 'D' && commandLineInput.charAt(1) == ',')
-                runRemoveAlbum(commandLineInput, albumCollection);
-            else if(commandLineInput.charAt(0) == 'L' && commandLineInput.charAt(1) == ',')
-                runLendAlbum(commandLineInput, albumCollection);
-            else if(commandLineInput.charAt(0) == 'R' && commandLineInput.charAt(1) == ',')
-                runReturnAlbum(commandLineInput, albumCollection);
             else if(commandLineInput.equals("Q")) {
                 System.out.println("Collection Manager terminated.");
                 break;
-            } else
-                System.out.println("Invalid command!");
+            }
+            else
+                runAlbumCommands(commandLineInput, albumCollection);
         }
+    }
+
+    /**
+     * Helper method that runs the album commands and checks the commandLineInput
+     * and matches the command with the input
+     */
+    public void runAlbumCommands(String commandLineInput, Collection albumCollection) {
+        if(commandLineInput.equals("P"))
+            albumCollection.print();
+        else if(commandLineInput.equals("PD"))
+            albumCollection.printByReleaseDate();
+        else if(commandLineInput.equals("PG"))
+            albumCollection.printByGenre();
+        else if(commandLineInput.charAt(0) == 'A' && commandLineInput.charAt(1) == ',')
+            runAddAlbum(commandLineInput, albumCollection);
+        else if(commandLineInput.charAt(0) == 'D' && commandLineInput.charAt(1) == ',')
+            runRemoveAlbum(commandLineInput, albumCollection);
+        else if(commandLineInput.charAt(0) == 'L' && commandLineInput.charAt(1) == ',')
+            runLendAlbum(commandLineInput, albumCollection);
+        else if(commandLineInput.charAt(0) == 'R' && commandLineInput.charAt(1) == ',')
+            runReturnAlbum(commandLineInput, albumCollection);
+        else
+            System.out.println("Invalid command!");
     }
 
     /**
