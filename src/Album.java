@@ -21,7 +21,7 @@ public class Album {
      * @param artist the artist of the Album.
      * @param genre the genre of the Album.
      * @param releaseDate the release date of the Album.
-     * @param isAvailable the status of the Album's availability to lent out.
+     * @param isAvailable the status of the Album's availability to be lent out.
      */
     public Album(String title, String artist, Genre genre, Date releaseDate, boolean isAvailable) {
         this.title = title;

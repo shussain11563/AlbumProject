@@ -14,9 +14,13 @@ public class Date implements Comparable<Date>
     private final int day;
     private final int year;
 
+    /** Constants used to calculate if year is a leap year*/
     public static final int QUADRENNIAL = 4;
+    /** Constants used to calculate if year is a leap year*/
     public static final int CENTENNIAL = 100;
+    /** Constants used to calculate if year is a leap year*/
     public static final int QUATERCENTENNIAL = 400;
+    /** The lower bound for the isValid() year*/
     public static final int THE_EIGHTYS = 1980;
 
     /**

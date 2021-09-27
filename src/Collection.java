@@ -25,10 +25,8 @@ public class Collection {
      * @return position of album in albums array, returns -1 if not found
      */
     private int find(Album album) {
-        //change i to something descriptive
-        //we can always use a helper method to iterate because of remove
+
         for(int i = 0; i < this.numAlbums; i++) {
-            // check if its not null
 
             if(this.albums[i] != null && this.albums[i].getTitle().equals(album.getTitle()) && this.albums[i].getArtist().equals(album.getArtist())) {
                 return i;
@@ -38,8 +36,8 @@ public class Collection {
     }
 
     /**
-     * Grows the albums array by 4.
-     * grow() is called in add() when the album array is full.
+     * Grows the albums collection  by 4.
+     * grow() is called in add() when the album collection is full.
      */
     private void grow() {
         // check if the Albums[] is null, then inititates the starter array
@@ -56,7 +54,7 @@ public class Collection {
 
     /**
      * Adds an album to the Collection and increases counter.
-     * Grows an albums array to store more than the capacity of the albums array.
+     * Grows the albums collection to store more than the capacity of the albums array.
      * @param album the album to add to the Collection.
      * @return true if adding album was successful, false if album is already in Collection.
      */
@@ -93,7 +91,7 @@ public class Collection {
     /**
      * Removes a specified album from the albums array.
      * @param album the album to remove from the Collection.
-     * @return true if removing an album from the albums array is successful, returns false otherwise.
+     * @return true if removing an album from the albums collection is successful, returns false otherwise.
      */
     public boolean remove(Album album)
     {
@@ -123,7 +121,7 @@ public class Collection {
             return true;
         }
         else {
-            return false; //not avaialble, already lended out
+            return false; //not available, already lent out
         }
         //if not available, set message to not available
 
@@ -143,12 +141,12 @@ public class Collection {
             return true;
         }
         else {
-            return false; //not avaialble, already lended out
+            return false; //not available, already lended out
         }
     } //set to available
 
     /**
-     * Prints each album's information in the albums array.
+     * Prints each album's information in the albums collection.
      */
     public void print() {
         if(numAlbums == 0) {
@@ -166,7 +164,7 @@ public class Collection {
 
 
     /**
-     * Sorts and modifies the album array by release date from oldest to recent. Prints the modified array.
+     * Sorts and modifies the album collection by release date from oldest to recent. Prints the modified array.
      */
     public void printByReleaseDate()
     {
@@ -192,7 +190,7 @@ public class Collection {
     }
 
     /**
-     * Sorts and modifies the album array by Genre. Prints the modified array.
+     * Sorts and modifies the album collection by Genre. Prints the modified array.
      */
     public void printByGenre() {
         if(numAlbums == 0) {
