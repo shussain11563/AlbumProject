@@ -6,28 +6,15 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class CollectionManager {
+    /**
+     * Method that is called by the RunProject1 driver and starts the Collection Manager
+     */
     public void run() {
         Scanner scanner = new Scanner(System.in);
         Boolean runProject = false;
-        /*
-
-        Date releaseDate = new Date("2/29/2021");
-        Date currentDate = new Date();
-
-        if(releaseDate.isValid() && releaseDate.compareTo(currentDate) <= 0) {
-            System.out.println("Valid Date!");
-        }
-        else{
-            System.out.println("Invalid Date!");
-        }
-
-        */
-
-        // Create a single collection object for one single run
         Collection albumCollection = new Collection();
 
         while(scanner.hasNextLine()) {
-
             if(runProject == false) {
                 System.out.println("Collection Manager starts running.");
                 runProject = true;
@@ -55,14 +42,16 @@ public class CollectionManager {
             else if(commandLineInput.equals("Q")) {
                 System.out.println("Collection Manager terminated.");
                 break;
-            }
-
-            else
+            } else
                 System.out.println("Invalid command!");
         }
     }
 
-    // Check if date is valid
+    /**
+     * Method that tokenizes the album string and runs the add method in the Collection Class
+     * The method also checks the genre with the enum valeus and also validates the date in the
+     * given string
+     */
     public void runAddAlbum(String albumDetails, Collection albumCollection) {
         StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
 
@@ -101,6 +90,9 @@ public class CollectionManager {
         }
     }
 
+    /**
+     * Method that tokenizes the album string and runs the remove method in the Collection Class
+     */
     public void runRemoveAlbum(String albumDetails, Collection albumCollection) {
         StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
         String title, artist = "";
@@ -117,6 +109,9 @@ public class CollectionManager {
             System.out.println(String.format("%s::%s >> is not in the collection.", tempAlbum.getTitle(), tempAlbum.getArtist()));
     }
 
+    /**
+     * Method that tokenizes the album string and runs the lendingOut method in the Collection Class
+     */
     public void runLendAlbum(String albumDetails, Collection albumCollection) {
         StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
         String title, artist = "";
@@ -134,6 +129,9 @@ public class CollectionManager {
             System.out.println(String.format("%s::%s >> is not available.", tempAlbum.getTitle(), tempAlbum.getArtist()));
     }
 
+    /**
+     * Method that tokenizes the album string and runs the returnAlbum method in the Collection Class
+     */
     public void runReturnAlbum(String albumDetails, Collection albumCollection) {
         StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
         String title, artist = "";
