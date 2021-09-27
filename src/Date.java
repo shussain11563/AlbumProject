@@ -1,4 +1,7 @@
 /**
+ * The Date class gives representation to the Date bases on
+ * the Gregorian Calendar and contains methods that compare
+ * and check the validity of a Date.
  * @author Sharia Hussain, David Lam
  */
 
@@ -15,16 +18,9 @@ public class Date implements Comparable<Date>
     public static final int CENTENNIAL = 100;
     public static final int QUATERCENTENNIAL = 400;
     public static final int THE_EIGHTYS = 1980;
-    public static final int MONTH_MIN = 1;
-    public static final int MONTH_MAX = 12;
-    public static final int DAY_MIN = 1;
-    public static final int DAY_MAX_THIRTHY = 30;
-    public static final int DAY_MAX_THIRTHY_ONE = 31;
-    public static final int DAY_MAX_LEAPYEAR = 29;
-    public static final int DAY_MAX_NOT_LEAPYEAR = 28;
 
     /**
-     * Date constructor that takes in a Date Object
+     * Constructs and initializes a Date based on a textual representation of "MM/DD/YYYY".
      */
     public Date(String date) {
         StringTokenizer stringTokenizer = new StringTokenizer(date, "/");
@@ -44,10 +40,18 @@ public class Date implements Comparable<Date>
     }
 
     /**
-     * Method that checks the validity of the date
-     * @return Returns true if the date is valid and false if the date is not valid
+     * Method that checks the validity of the date.
+     * @return Returns true if the date is valid and false if the date is not valid.
      */
-    public boolean isValid() {
+    public boolean isValid()
+    {
+        int MONTH_MIN = 1;
+        int MONTH_MAX = 12;
+        int DAY_MIN = 1;
+        int DAY_MAX_THIRTHY = 30;
+        int DAY_MAX_THIRTHY_ONE = 31;
+        int DAY_MAX_LEAPYEAR = 29;
+        int DAY_MAX_NOT_LEAPYEAR = 28;
         Calendar currentDate = Calendar.getInstance();
 
         if(this.year < THE_EIGHTYS || this.year > currentDate.get(Calendar.YEAR)) {
@@ -70,7 +74,6 @@ public class Date implements Comparable<Date>
                     else {
                         return (this.day >= DAY_MIN && this.day <= DAY_MAX_LEAPYEAR);
                     }
-
                 }
                 else {
                     return (this.day >= DAY_MIN && this.day <= DAY_MAX_NOT_LEAPYEAR);
@@ -87,18 +90,12 @@ public class Date implements Comparable<Date>
 
     /**
      *  This method overrides the compareTo method and it compares two date objects and returns based on which dates are the same, before, or after.
-     * @param date object being compared to the current date
-     * @return Returns -1 if Date1 < Date2, Returns 0 if Date1 == Date2, and Returns 1 if Date1 > Date2
+     * @param date object being compared to the current date.
+     * @return Returns -1 if Date1 < Date2, Returns 0 if Date1 == Date2, and Returns 1 if Date1 > Date2.
      */
     @Override
     public int compareTo(Date date)
     {
-        /*
-        if(date==null)
-        {
-            return -1;
-        }
-        */
         if(this.year < date.year) {
             return -1;
         }
@@ -126,8 +123,8 @@ public class Date implements Comparable<Date>
     }
 
     /**
-     * Method that returns a formatted string of the Date Object
-     * @return Returns a formatted string in the format of Month/Day/Year
+     * Method that returns a formatted string of the Date Object.
+     * @return Returns a formatted string in the format of Month/Day/Year.
      */
     @Override
     public String toString()
@@ -136,7 +133,7 @@ public class Date implements Comparable<Date>
     }
 
     /**
-     * Testbed main for the Date class
+     * Testbed main for the Date class.
      */
     public static void main(String[] args) {
         // test case #1, a date with a year before 1980 should be invalid

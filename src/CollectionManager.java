@@ -1,4 +1,6 @@
 /**
+ * CollectionManager is a user interface class that handles I/O with Collection
+ * and Album. Contains an initialized Collection ready to manipulate Album objects.
  * @author Sharia Hussain, David Lam
  */
 
@@ -7,7 +9,8 @@ import java.util.StringTokenizer;
 
 public class CollectionManager {
     /**
-     * Method that is called by the RunProject1 driver and starts the Collection Manager
+     * Method that is called by the RunProject1 driver and starts the Collection Manager.
+     * Initializes Collection object and takes input from console to perform actions.
      */
     public void run() {
         Scanner scanner = new Scanner(System.in);
@@ -49,8 +52,8 @@ public class CollectionManager {
 
     /**
      * Method that tokenizes the album string and runs the add method in the Collection Class
-     * The method also checks the genre with the enum valeus and also validates the date in the
-     * given string
+     * The method also checks the genre with the enum values and also validates the date in the
+     * given string.
      */
     public void runAddAlbum(String albumDetails, Collection albumCollection) {
         StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
@@ -91,7 +94,7 @@ public class CollectionManager {
     }
 
     /**
-     * Method that tokenizes the album string and runs the remove method in the Collection Class
+     * Method that tokenizes the album string and runs the remove method in the Collection Class.
      */
     public void runRemoveAlbum(String albumDetails, Collection albumCollection) {
         StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
@@ -110,7 +113,7 @@ public class CollectionManager {
     }
 
     /**
-     * Method that tokenizes the album string and runs the lendingOut method in the Collection Class
+     * Method that tokenizes the album string and runs the lendingOut method in the Collection Class.
      */
     public void runLendAlbum(String albumDetails, Collection albumCollection) {
         StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");
@@ -130,7 +133,7 @@ public class CollectionManager {
     }
 
     /**
-     * Method that tokenizes the album string and runs the returnAlbum method in the Collection Class
+     * Method that tokenizes the album string and runs the returnAlbum method in the Collection Class.
      */
     public void runReturnAlbum(String albumDetails, Collection albumCollection) {
         StringTokenizer stringTokenizer = new StringTokenizer(albumDetails, ",");

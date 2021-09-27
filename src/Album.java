@@ -1,5 +1,9 @@
 /**
- * ??????????
+ * The Album class acts as a blueprint for an Album object
+ * which contains attributes such as title, artist,
+ * genre, release date, and availability.
+ * This class also contains methods to allow
+ * album objects to have representations such as how they are equal.
  * @author Sharia Hussain, David Lam
  */
 
@@ -28,9 +32,10 @@ public class Album {
     }
 
     /**
-     * ?????????
-     * @param title
-     * @param artist
+     * Constructs and initializes an Album object for temporary use.
+     * Used for lending, removing, and returning an Album.
+     * @param title the title of the Album.
+     * @param artist the artist of the Album.
      */
     public Album(String title, String artist) {
         this.title = title;
@@ -128,7 +133,7 @@ public class Album {
     }
 
     /**
-     * Method that retuns a formated String of the album being deleted.
+     * Method that returns a formatted String of the album being deleted.
      * @return a textual representation of the deleted Album's information
      */
     public String removeToString() {

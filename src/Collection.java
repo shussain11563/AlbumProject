@@ -1,4 +1,7 @@
 /**
+ * The Collection class is an arraylist data structure that contains albums.
+ * This class contains methods that allow adding, deleting, sorting, lending, removing
+ * and other manipulations of the arraylist.
  * @author Sharia Hussain, David Lam
  */
 public class Collection {
