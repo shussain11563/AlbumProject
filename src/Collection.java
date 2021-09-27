@@ -40,7 +40,7 @@ public class Collection {
      */
     private void grow() {
         //creates an array bigger than the old array
-        int growthFactor = 4;
+        int growthFactor =4;
         Album[] oldAlbumsCollection = albums;
         int oldAlbumsArrayLength = albums.length;
         this.albums = new Album[albums.length+growthFactor]; //4 is a magic number
