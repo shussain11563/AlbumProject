@@ -6,8 +6,8 @@ public class Collection {
     private int numAlbums; //number of albums currently in the collection
 
     /**
-     * Collection Constructo
-     * Initializes an albums array to 4.
+     * Constructs and initializes a Collection object.
+     * Initializes an albums array with size of 4.
      */
     public Collection()
     {
@@ -17,8 +17,8 @@ public class Collection {
     }
 
     /**
-     *
-     * @param album
+     * Finds an album within the Collection.
+     * @param album the album to find within the Collection
      * @return position of album in albums array, returns -1 if not found
      */
     private int find(Album album) {
@@ -52,9 +52,10 @@ public class Collection {
     } //increase the capacity of the array list by 4
 
     /**
-     *
-     * @param album
-     * @return
+     * Adds an album to the Collection and increases counter.
+     * Grows an albums array to store more than the capacity of the albums array.
+     * @param album the album to add to the Collection.
+     * @return true if adding album was successful, false if album is already in Collection.
      */
     public boolean add(Album album) {
         // return false if the album already exists
@@ -88,8 +89,8 @@ public class Collection {
 
     /**
      * Removes a specified album from the albums array.
-     * @param album
-     * @return true if removing an album from the albums array is successful, returns false otherwise or if album is not found
+     * @param album the album to remove from the Collection
+     * @return true if removing an album from the albums array is successful, returns false otherwise
      */
     public boolean remove(Album album)
     {
@@ -108,8 +109,8 @@ public class Collection {
 
     /**
      *
-     * @param album
-     * @return true if
+     * @param album the album to lend out.
+     * @return true if the album is available, false if the album is not available/already lended out
      */
     public boolean lendingOut(Album album) {
         int albumIndex = this.find(album);
@@ -128,8 +129,8 @@ public class Collection {
 
     /**
      *
-     * @param album
-     * @return
+     * @param album the album to return.
+     * @return true if the album is returning an album was successful, false otherwise.
      */
     public boolean returnAlbum(Album album) {
         int albumIndex = this.find(album);
@@ -196,10 +197,8 @@ public class Collection {
             return;
         }
         System.out.println("*Album collection by genre.");
-        //Album[] copyOfAlbum = new Album[this.albums.length];
         Genre[] genres = new Genre[this.albums.length];
         for(int i = 0; i < this.albums.length; i++) {
-            //copyOfAlbum[i] = this.albums[i];
             if(this.albums[i] != null) {
                 genres[i] = this.albums[i].getGenre();
             }
@@ -214,27 +213,27 @@ public class Collection {
     }
 
     /**
-     * Sorts the album array by
-     *
-     * @param arr
-     * @param album
-     * @param <T>
+     * Sorting algorithm to sort Collection based on a generic object.
+     * Used to sort by release date and genre.
+     * @param arr array which the sorting is applied
+     * @param albums the album collection to sort.
+     * @param <T> generic used to access generic's compareTo() function
      */
-    private <T extends Comparable<T>> void insertionSort(T[] arr, Album[] album) {
-        for(int i = 0; i < album.length; i++) {
+    private <T extends Comparable<T>> void insertionSort(T[] arr, Album[] albums) {
+        for(int i = 0; i < albums.length; i++) {
             T key = arr[i];
-            Album keyPointer = album[i];
+            Album keyPointer = albums[i];
             int j = i-1;
 
             while(j>=0 && arr[j]!=null && key!=null && arr[j].compareTo(key)>0)
             {
                 arr[j + 1] = arr[j];
-                album[j + 1] = album[j];
+                albums[j + 1] = albums[j];
                 j = j - 1;
             }
 
             arr[j + 1] = key;
-            album[j + 1] = keyPointer;
+            albums[j + 1] = keyPointer;
         }
     }
 }
